@@ -3,7 +3,7 @@
 
 > **HOW TO USE**
 > 1. Paste this ENTIRE file into any capable AI (Claude, GPT, Gemini…).
-> 2. Then send: `Build a landing page for <PRODUCT> — <one line what it does> for <AUDIENCE>. Palette: <name or "you choose">. Pricing: <tiers or "you invent">.`
+> 2. Then send: `Build a landing page for <PRODUCT> - <one line what it does> for <AUDIENCE>. Palette: <name or "you choose">. Pricing: <tiers or "you invent">.`
 > 3. The AI returns a single `index.html`. Save it and deploy anywhere.
 
 If any detail is missing, **invent believable specifics** instead of asking questions.
@@ -26,7 +26,7 @@ Everything below the line "REFERENCE IMPLEMENTATION" is tested code. **Copy it v
 5. **One direction, one signature moment.** Choose a single aesthetic and one unforgettable detail (a kinetic headline, a 3D hero, a pinned scroll story, an unexpected colour hit). Everything else supports it quietly.
 6. **Progressive enhancement.** Content is visible without JS. JS adds the hidden/animated state (the reference CSS already does this through the `.js` class).
 7. **Accessible by default.** Semantic landmarks, one `h1`, labelled controls, visible `:focus-visible`, contrast ≥ 4.5:1 (3:1 for large text), `prefers-reduced-motion` honoured, `alt` on every image.
-8. **No emoji as icons**, no Font Awesome, no purple-gradient-on-white, no identical image-left/text-right rows repeated, no Inter/Roboto/Arial as the display font.
+8. **No emoji as icons**, no Font Awesome, no purple-gradient-on-white, no repeated image-left/text-right rows (never 3 split sections in a row), no Inter/Roboto/Arial as the display font. **Zero em-dashes (`—`) or en-dashes (`–`) anywhere in visible copy**; use a comma, colon, full stop or a plain hyphen.
 9. **Only animate `transform` and `opacity`** (plus `clip-path`). Never `transition: all`. Never `ease-in` on UI.
 10. **Placeholders must be swappable:** put contact details, social URLs and form action in obvious places and mention them in the closing notes.
 11. **Visual-first.** A page without rich imagery is a failed page. Obey the VISUAL BUDGET in A4: a real hero visual, at least 14 photos, a gallery section with lightbox, portraits wherever there are people, and no run of text-only sections.
@@ -37,7 +37,7 @@ Everything below the line "REFERENCE IMPLEMENTATION" is tested code. **Copy it v
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- FONTS_LINK: replace with the Google Fonts <link> for the chosen pairing (display=swap, only weights used) -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,200..800&family=Playfair+Display:ital,wght@0,400..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Icons: Tabler Icons webfont (outline icons: <i class="ti ti-NAME"></i>) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.49.0/dist/tabler-icons.min.css">
@@ -62,7 +62,7 @@ Reliable names: `arrow-right`, `arrow-up-right`, `arrow-narrow-right`, `menu-2`,
 
 ### A3. Palette & type decisions
 
-Pick ONE palette and ONE font pairing for the brief. The palette is expressed only as the CSS variables in the reference `:root` (override those values; never hard-code colours elsewhere).
+Pick ONE palette for the brief. The type system is fixed (below); do not swap fonts. The palette is expressed only as the CSS variables in the reference `:root` (override those values; never hard-code colours elsewhere).
 
 | Palette | Mood | `--bg` | `--surface` | `--text` | `--accent` | `--accent-2` |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -83,30 +83,51 @@ Pick ONE palette and ONE font pairing for the brief. The palette is expressed on
 
 For light palettes also set `--text-2`/`--text-3`/`--line` as dark-with-alpha and set `--on-accent` to whichever of `#fff`/near-black gives ≥ 4.5:1 on `--accent`. If the accent fails 4.5:1 as text on `--bg`, use it for fills and lines only.
 
-Font pairings (display + body [+ mono]):
-- Luxury editorial: **Instrument Serif** + **Geist** · Cormorant Garamond + Hanken Grotesk
-- Tech precise: **Space Grotesk** + **Geist** + JetBrains Mono
-- Dark industrial: **Barlow Condensed** + Barlow + IBM Plex Mono
-- Organic soft: **Fraunces** + DM Sans
-- Playful bold: **Bricolage Grotesque** + Outfit
-- Brutalist: **Archivo Black** + Archivo + Space Mono
-- Retro-futurist: **Syne** + Chakra Petch + Share Tech Mono
-- Clean corporate: **Plus Jakarta Sans** only
+#### The type system (fixed, use on every site)
+
+Five roles, five fonts. The contrast between a huge condensed display face and a clean body face is what makes the page look designed. Do not replace them with a trendy grotesk.
+
+| Role | Font | Used for |
+| --- | --- | --- |
+| `--font-display` | **Bebas Neue** | Hero titles and the biggest headings (h1). Always uppercase by nature, tight, huge |
+| `--font-display2` | **Rajdhani** 500 to 700 | Section headings (h2/h3), nav links, buttons, small uppercase labels |
+| `--font-display3` | **Playfair Display** (italic) | Pull quotes, testimonials and one accent word at most. Never for headings in general |
+| `--font-body` | **Inter** | All body copy and UI text |
+| `--font-mono` | **JetBrains Mono** | Numbers, stats, prices, codes |
+
+Rules: Bebas Neue has one weight, never faux-bold it. Hero `line-height:.92`, letter-spacing `.02em`. Rajdhani labels are uppercase with `letter-spacing:.15em`, weight 600. Body copy is `line-height:1.7`, max `65ch`. Emphasis inside a headline uses the colour accent or italic of the SAME font, never a different family. Italic words with descenders (y g j p q) need `line-height:1.1` and `padding-bottom:.06em` so they do not clip. Light, romantic or editorial briefs (weddings, photography, luxury) may promote Playfair Display to the display role and keep Inter for body; everything else keeps Bebas Neue.
 
 ### A4. Visuals: photos, generated art and galleries (MANDATORY)
 
 **Rule zero:** this site must be *full of visuals*. Text-only layouts are rejected.
 
-#### A4.1 VISUAL BUDGET (minimum, every page)
+#### A4.1 VISUAL BUDGET (scale it to the brief)
 
-- **Hero visual:** a full-bleed photo with scrim, OR a 3D / shader scene, OR a product mock-up built in HTML/CSS, OR a photo collage. Never a bare-text hero.
-- **At least 14 distinct photos** on the page (20+ for restaurants, real estate, fashion/e-commerce, wedding, photography and gyms).
-- **At least one gallery section** (A4.4): masonry grid of **9 or more** photos with hover captions and a working lightbox. Its photos are chosen to fit the brand.
-- **Portraits, not initials:** every testimonial, review, team member, coach, agent and wedding-party member has a portrait photo from the `people.*` set (match the written gender and age).
-- **No more than two consecutive sections** without a photo, generated art panel or mock-up.
+Pages are visual, but photos are there to serve the content, never to fill space.
+
+- **Hero visual:** a full-bleed photo with scrim, OR a 3D / shader scene, OR a real product/UI composition, OR a photo collage. Never a bare-text hero, never a gradient blob.
+- **Photo count by brief:** visual businesses (restaurants, real estate, fashion, weddings, photography, gyms) use 12 or more photos; SaaS, agencies and portfolios use 4 to 8 chosen with care. Never pad to hit a number.
+- **A gallery section with lightbox (A4.4) only when the brief is visual** (see the type-specific section). Do not add a gallery to a SaaS page.
+- **Portraits, not initials:** every testimonial, review, team member, coach, agent and wedding-party member has a portrait from the `people.*` set (match the written gender and age).
+- **Rhythm:** no more than two consecutive sections without a photo or a visual panel.
 - Every card or tile with an image slot uses `.media` (generated art sits underneath the photo; see A4.3).
 - **Re-use limit:** a photo appears at most **twice** on a page, with different crops and different alt text.
-- Add at least one *atmosphere* moment: a photo marquee strip or a bento photo collage (A4.5).
+- No text, tags, pills, section numbers or fake photo credits on top of photos. Captions go below the image or on hover in a gallery.
+
+#### A4.1b PROFESSIONAL RESTRAINT (what separates a studio build from a template)
+
+These rules remove the usual AI-template tells. They override any effect list.
+
+1. **Layout variety.** Use at least 4 different layout families across the page (full-bleed, split, bento, horizontal rail, stacked list, pinned story, single big statement). A family appears at most once. Never 3 image+text splits in a row. No three identical equal-width feature cards in a row; use an asymmetric grid.
+2. **Eyebrows are rationed.** The small uppercase label above a heading may appear at most once per 3 sections (the hero counts). Most sections get no eyebrow; the heading alone is enough. Never number sections (`01 /`, `002`), never add a micro-sentence under an eyebrow.
+3. **Hero stack:** at most 4 text elements: optional eyebrow, headline (max 2 lines), subtext (max 20 words), CTAs (1 primary + 1 secondary). No tagline under the CTAs, no trust strip, no pricing teaser, no scroll cue.
+4. **One of each, not all of them.** One marquee per page at most. Grain (`body.grain`), cursor follower, tilt and spotlight cards are OFF unless the brief asks for that mood; pick at most two pointer effects per page.
+5. **No decoration for its own sake:** no locale or clock strips, no version labels (`v2.0`, `BETA`), no status dots, no vertical rotated text, no hairline grids that organise nothing, no pills overlaid on images.
+6. **One shape system.** One radius scale per page (all-soft or all-sharp, buttons may be full-pill), one accent colour used everywhere, one theme (no section flipping light/dark).
+7. **Motion is motivated.** Every animation must communicate hierarchy, sequence, feedback or state. If you cannot say why in one sentence, delete it.
+8. **Copy audit before finishing.** Re-read every visible string. Cut filler verbs (elevate, seamless, unleash, next-gen), invented-precision numbers (99.9%, 4.1x) that the brief did not give, and any sentence that sounds clever but means nothing. Plain and specific beats poetic. Section headings are 8 words or fewer; sub-paragraphs 25 words or fewer.
+9. **Buttons and forms.** CTA labels fit on one line (1 to 3 words), one label per intent across the page (not "Contact", "Get in touch" and "Let's talk" together), AA contrast on every button and field, labels above inputs.
+10. **Logo walls** (when needed) sit below the hero, contain logos only (no category captions), and use real SVG marks (Simple Icons CDN) or clean monograms for invented brands.
 
 #### A4.2 The verified photo library: use ONLY these
 
@@ -247,7 +268,7 @@ The engine puts a unique **generative SVG artwork** (mesh gradient, waves, topog
 - Force one slot with `data-art="rays"` on that `.media`; opt out with `data-art="none"`.
 - Use a `.media` *without any `<img>`* when you want pure artwork (brand panels, feature tiles, project covers): it renders the generated art by itself.
 
-#### A4.4 Gallery component (required at least once; use again wherever it fits)
+#### A4.4 Gallery component (use when the brief is visual; see A4.1)
 
 ```html
 <section class="sec" id="gallery"><div class="wrap">
@@ -271,7 +292,7 @@ The engine puts a unique **generative SVG artwork** (mesh gradient, waves, topog
 
 The engine adds the lightbox automatically (keyboard ←/→/Esc, swipe, preload, focus return) and the chip filters. Do not write your own lightbox.
 
-#### A4.5 Atmosphere components
+#### A4.5 Atmosphere components (optional, one at most: a marquee OR a bento collage, see A4.1b)
 
 **Photo marquee** (a slow, endless strip of photos; duplicate the set once for a seamless loop):
 
@@ -320,8 +341,10 @@ The engine adds the lightbox automatically (keyboard ←/→/Esc, swipe, preload
   --ok:#35c18a; --err:#f0615d;
 
   /* type: OVERRIDE font families */
-  --font-display:'Space Grotesk',system-ui,sans-serif;
-  --font-body:'Geist',system-ui,sans-serif;
+  --font-display:'Bebas Neue',Impact,sans-serif;
+  --font-display2:'Rajdhani',system-ui,sans-serif;
+  --font-display3:'Playfair Display',Georgia,serif;
+  --font-body:'Inter',system-ui,sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,monospace;
 
   /* fluid type scale */
@@ -362,7 +385,7 @@ ul,ol{list-style:none}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip-link{position:absolute;left:-999px;top:8px;z-index:10000;background:var(--accent);color:var(--on-accent);padding:.6rem 1rem;border-radius:8px}
 .skip-link:focus{left:12px}
-body::after{content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+body.grain::after{content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* ───────── layout ───────── */
@@ -373,15 +396,17 @@ body::after{content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;o
 .stack>*+*{margin-top:var(--stack,1rem)}
 
 /* ───────── type ───────── */
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;text-wrap:balance}
-.display{font-size:var(--step-5);line-height:.92;letter-spacing:-.04em}
-h1{font-size:var(--step-4);line-height:.96;letter-spacing:-.035em}
-h2{font-size:var(--step-3);line-height:1;letter-spacing:-.03em}
-h3{font-size:var(--step-1);line-height:1.15;letter-spacing:-.015em}
-p{text-wrap:pretty}
-.lead{font-size:var(--step-1);line-height:1.45;color:var(--text-2);max-width:56ch}
-.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font:500 var(--step--1)/1 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)}
-.eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
+h1{font-family:var(--font-display);font-weight:400;font-size:var(--step-5);line-height:.92;letter-spacing:.02em;text-wrap:balance}
+h2{font-family:var(--font-display2);font-weight:700;font-size:var(--step-3);line-height:1.04;letter-spacing:.005em;text-wrap:balance}
+h3{font-family:var(--font-display2);font-weight:600;font-size:var(--step-1);line-height:1.15}
+h4{font-family:var(--font-display2);font-weight:600;font-size:var(--step-0)}
+.display{font-family:var(--font-display);font-weight:400;font-size:var(--step-5);line-height:.92;letter-spacing:.02em}
+p{text-wrap:pretty;line-height:1.7;max-width:65ch}
+.lead{font-size:var(--step-1);line-height:1.5;color:var(--text-2);max-width:56ch}
+.label{font:600 .72rem/1 var(--font-display2);letter-spacing:.15em;text-transform:uppercase;color:var(--text-2)}
+.quote{font:italic 400 var(--step-1)/1.45 var(--font-display3);max-width:46ch}
+.stat{font:600 var(--step-3)/1 var(--font-mono);font-variant-numeric:tabular-nums}
+.eyebrow{display:inline-block;font:600 .72rem/1 var(--font-display2);letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
 .mono{font-family:var(--font-mono)}
 .num{font-variant-numeric:tabular-nums}
 .muted{color:var(--text-2)}
@@ -415,7 +440,7 @@ p{text-wrap:pretty}
 .site-header{position:fixed;inset:0 0 auto 0;z-index:900;transition:background-color .4s,backdrop-filter .4s,border-color .4s,transform .5s var(--ease-out);border-bottom:1px solid transparent}
 .site-header.stuck{background:rgb(var(--bg-rgb,11 11 12) / .72);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border-bottom-color:var(--line)}
 .header-in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:72px}
-.logo{font:600 1.25rem/1 var(--font-display);letter-spacing:-.03em;display:inline-flex;align-items:center;gap:.5rem}
+.logo{font:400 1.6rem/1 var(--font-display);letter-spacing:.06em;display:inline-flex;align-items:center;gap:.5rem}
 .logo i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent)}
 .nav-links{display:none;gap:2rem}
 .nav-links a{font-size:.95rem;color:var(--text-2);transition:color var(--t-hover)}
@@ -428,7 +453,7 @@ p{text-wrap:pretty}
 .mobile-menu{position:fixed;inset:0;z-index:950;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:96px var(--gutter) 40px;
   clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .7s var(--ease-drawer),visibility 0s .7s}
 .menu-open .mobile-menu{clip-path:inset(0);visibility:visible;transition-delay:0s}
-.mobile-menu a.m-link{display:block;font:500 clamp(2.4rem,11vw,4rem)/1.1 var(--font-display);letter-spacing:-.035em;padding:.2em 0;border-bottom:1px solid var(--line);
+.mobile-menu a.m-link{display:block;font:400 clamp(2.8rem,12vw,4.6rem)/1 var(--font-display);letter-spacing:.03em;padding:.2em 0;border-bottom:1px solid var(--line);
   opacity:0;transform:translateY(24px);transition:opacity .5s,transform .7s var(--ease-out)}
 .menu-open .mobile-menu a.m-link{opacity:1;transform:none;transition-delay:calc(.12s + var(--i,0)*60ms)}
 .mobile-menu .m-foot{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;color:var(--text-2)}
@@ -514,8 +539,8 @@ dialog.lb[open]{display:grid;grid-template-rows:auto 1fr auto;animation:lbIn .45
 .marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:1.1rem}
 .marquee-track{display:flex;gap:3rem;width:max-content;animation:marq var(--marq-speed,32s) linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-track span{font:500 var(--step-3)/1 var(--font-display);letter-spacing:-.03em;white-space:nowrap;display:inline-flex;align-items:center;gap:3rem}
-.marquee-track span::after{content:"✦";font-size:.5em;color:var(--accent)}
+.marquee-track span{font:400 var(--step-3)/1 var(--font-display);letter-spacing:.03em;white-space:nowrap;display:inline-flex;align-items:center;gap:3rem}
+.marquee-track span::after{content:"";width:.35em;height:.35em;border-radius:50%;background:var(--accent)}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 /* ───────── cursor ───────── */
@@ -527,7 +552,7 @@ dialog.lb[open]{display:grid;grid-template-rows:auto 1fr auto;animation:lbIn .45
 /* ───────── loader ───────── */
 .loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:grid;place-items:center;transition:transform 1s var(--ease-in-out)}
 .loader.done{transform:translateY(-100%)}
-.loader-mark{font:600 clamp(2rem,8vw,4rem)/1 var(--font-display);letter-spacing:-.04em;animation:pulse 1.2s var(--ease-out) infinite alternate}
+.loader-mark{font:400 clamp(2.4rem,9vw,4.6rem)/1 var(--font-display);letter-spacing:.05em;animation:pulse 1.2s var(--ease-out) infinite alternate}
 @keyframes pulse{from{opacity:.25}to{opacity:1}}
 
 /* ───────── forms ───────── */
@@ -565,10 +590,10 @@ dialog.lb[open]{display:grid;grid-template-rows:auto 1fr auto;animation:lbIn .45
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>BRAND — specific value proposition</title>
+  <title>BRAND - specific value proposition</title>
   <meta name="description" content="150–160 characters of real copy.">
   <meta name="theme-color" content="#0b0b0c">
-  <meta property="og:title" content="BRAND — value proposition">
+  <meta property="og:title" content="BRAND - value proposition">
   <meta property="og:description" content="Same real copy.">
   <meta property="og:type" content="website">
   <!-- fonts + tabler + <style> with A6 CSS then page-specific CSS -->
@@ -820,7 +845,7 @@ Markup conventions the engine understands:
       setTimeout(() => {
         btn?.classList.remove('is-loading'); if (btn) btn.disabled = false;
         f.reset();
-        if (status) { status.textContent = f.dataset.success || 'Thanks — we’ll reply within a day.'; status.hidden = false; }
+        if (status) { status.textContent = f.dataset.success || 'Thanks - we’ll reply within a day.'; status.hidden = false; }
       }, 900);
     });
   });
@@ -1022,19 +1047,19 @@ Move one kind of visitor to one action (start free trial / book a demo / join wa
 
 ### C2. Direction
 
-Default **Blueprint** (dark) with Space Grotesk + Geist + JetBrains Mono. Alternatives: **Mint Ledger** (fintech), **Clinic** (health/B2B, light), **Violet Hour** (AI/creative tools), **Glacier** (light, enterprise). The product mock-up is the visual star, so keep the rest disciplined.
+Default **Blueprint** (dark) with Bebas Neue + Rajdhani + Inter. Alternatives: **Mint Ledger** (fintech), **Clinic** (health/B2B, light), **Violet Hour** (AI/creative tools), **Glacier** (light, enterprise). The product mock-up is the visual star, so keep the rest disciplined.
 
 ### C3. Section order (all required)
 
-1. **Hero** — eyebrow pill (“New · v2.0”), h1 (outcome, 5–9 words), subhead (≤ 22 words), primary + secondary CTA, tiny reassurance line, **animated product mock-up** below/right.
-2. **Logo marquee** — 8–10 invented customer wordmarks as text in a muted colour.
+1. **Hero** — h1 (outcome, 5–9 words), subhead (≤ 22 words), primary + secondary CTA, tiny reassurance line, **animated product mock-up** below/right.
+2. **Logo wall** (static, below the hero, logos only, no captions) — 6 to 8 invented customers as clean SVG monograms or real Simple Icons marks in a muted colour. No scrolling.
 3. **Problem → solution** — a two-column statement: the old way (struck-through list) vs. the new way.
 4. **Feature bento** — 6 tiles of different sizes, each with icon tile, title, one-sentence benefit, and one small visual.
 5. **How it works** — sticky stage: 3 steps on the left, a device stage on the right that swaps screens as steps scroll by.
 6. **Numbers** — 4 counters (users, time saved, uptime, integrations).
 7. **Testimonials** — 3 cards, one featured large, concrete results.
 8. **Pricing** — monthly/annual toggle, 3 tiers, middle highlighted.
-9. **FAQ** — 6 `<details>` items that remove objections.
+9. **FAQ** - 6 `<details>` items that remove objections.
 10. **Final CTA** — big headline, one button, risk reversal line.
 11. **Footer** — product, company, resources, legal; newsletter optional.
 
@@ -1086,7 +1111,7 @@ Use `<body data-art-kinds="mesh,grid,rings">`. Total distinct photos ≥ 16.
 @media (min-width:600px){.kpis{grid-template-columns:repeat(4,1fr)}}
 .kpi{padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--bg)}
 .kpi small{color:var(--text-3);font:500 .7rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
-.kpi strong{display:block;margin-top:.5rem;font:600 clamp(1.3rem,2.4vw,1.8rem)/1 var(--font-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.kpi strong{display:block;margin-top:.5rem;font:400 clamp(1.3rem,2.4vw,1.8rem)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .kpi em{font-style:normal;font-size:.75rem;color:var(--ok)}
 .chart{border:1px solid var(--line);border-radius:14px;background:var(--bg);padding:14px}
 .chart svg{width:100%;height:auto}
@@ -1102,7 +1127,7 @@ Use `<body data-art-kinds="mesh,grid,rings">`. Total distinct photos ≥ 16.
 
 /* logos */
 .logos{display:flex;gap:3rem;align-items:center;width:max-content;animation:marq 40s linear infinite}
-.logos span{font:600 1.4rem/1 var(--font-display);letter-spacing:-.04em;color:var(--text-3);white-space:nowrap}
+.logos span{font:400 1.4rem/1 var(--font-display);letter-spacing:.02em;color:var(--text-3);white-space:nowrap}
 
 /* problem / solution */
 .vs{display:grid;gap:clamp(12px,2vw,24px)}
@@ -1139,11 +1164,11 @@ Use `<body data-art-kinds="mesh,grid,rings">`. Total distinct photos ≥ 16.
 .stats{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
 @media (min-width:861px){.stats{grid-template-columns:repeat(4,1fr)}}
 .stat{padding:clamp(18px,3vw,32px);border-top:1px solid var(--line)}
-.stat b{display:block;font:500 var(--step-4)/1 var(--font-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.stat b{display:block;font:400 var(--step-4)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .quotes{display:grid;gap:12px}
 @media (min-width:861px){.quotes{grid-template-columns:1.4fr 1fr;grid-auto-rows:auto}.quotes .big{grid-row:span 2}}
 .quotes blockquote{font:400 var(--step-1)/1.4 var(--font-body)}
-.quotes .big blockquote{font:400 var(--step-2)/1.2 var(--font-display);letter-spacing:-.02em}
+.quotes .big blockquote{font:400 var(--step-2)/1.2 var(--font-display);letter-spacing:.02em}
 
 /* pricing */
 .toggle{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--surface)}
@@ -1154,14 +1179,14 @@ Use `<body data-art-kinds="mesh,grid,rings">`. Total distinct photos ≥ 16.
 @media (min-width:861px){.plans{grid-template-columns:repeat(3,1fr);align-items:stretch}}
 .plan{display:flex;flex-direction:column;gap:1.2rem}
 .plan.pop{border-color:var(--accent);background:linear-gradient(180deg,rgb(var(--accent-rgb) / .08),var(--surface) 40%)}
-.price{font:500 var(--step-4)/1 var(--font-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.price{font:400 var(--step-4)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .price small{font:400 var(--step-0)/1 var(--font-body);color:var(--text-2);letter-spacing:0}
 .plan ul{display:grid;gap:.7rem;flex:1}
 .plan li{display:flex;gap:.6rem;color:var(--text-2)}.plan li i{color:var(--accent);margin-top:.25rem}
 
 /* faq */
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.2rem 0;font:500 var(--step-1)/1.3 var(--font-display);letter-spacing:-.01em}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.2rem 0;font:400 var(--step-1)/1.3 var(--font-display);letter-spacing:.02em}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary i{transition:transform .4s var(--ease-out);flex:none}
 .faq details[open] summary i{transform:rotate(45deg)}
@@ -1217,9 +1242,9 @@ Note: `.chart` reveals through `data-reveal` and the CSS above draws its line on
   <p class="eyebrow" data-reveal>How it works</p><h2 data-reveal style="max-width:16ch">From signup to insight in ten minutes</h2>
   <div class="steps" style="margin-top:3rem">
     <div>
-      <article class="step" data-step="0"><span class="n">01 / CONNECT</span><h3>Plug in your data</h3><p class="muted">One-click connections to Stripe, Postgres and 40 other sources. No engineers needed.</p></article>
-      <article class="step" data-step="1"><span class="n">02 / MODEL</span><h3>Describe what you want to know</h3><p class="muted">Ask in plain English; we write the query and show you the work.</p></article>
-      <article class="step" data-step="2"><span class="n">03 / SHARE</span><h3>Send a live dashboard</h3><p class="muted">Share a link, schedule a digest, or embed it where your team already works.</p></article>
+      <article class="step" data-step="0"><span class="n">Connect</span><h3>Plug in your data</h3><p class="muted">One-click connections to Stripe, Postgres and 40 other sources. No engineers needed.</p></article>
+      <article class="step" data-step="1"><span class="n">Model</span><h3>Describe what you want to know</h3><p class="muted">Ask in plain English; we write the query and show you the work.</p></article>
+      <article class="step" data-step="2"><span class="n">Share</span><h3>Send a live dashboard</h3><p class="muted">Share a link, schedule a digest, or embed it where your team already works.</p></article>
     </div>
     <div class="stage" aria-hidden="true">
       <div class="screen on"><div class="tile"><i class="ti ti-brand-stripe"></i>Stripe · connected</div><div class="tile"><i class="ti ti-database"></i>Postgres · syncing 82%</div><div class="tile"><i class="ti ti-brand-google-analytics"></i>Analytics · ready</div></div>

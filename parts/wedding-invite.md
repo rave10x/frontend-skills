@@ -25,18 +25,16 @@ Guests open one link on their phone and instantly know **when, where, what to we
 
 | Style | Palette (A3) | Fonts |
 | --- | --- | --- |
-| Classic / garden | **Ink & Cream** (light) with a sage or blush accent | Cormorant Garamond + Hanken Grotesk, script accent: Pinyon Script |
-| Romantic / blush | **Rose Quartz** (light) | Cormorant Garamond + DM Sans, Pinyon Script |
-| Royal / festive | **Noir Gold** (dark) or **Terracotta** | Cormorant Garamond + Hanken Grotesk |
-| Beach / modern | **Glacier** (light) | Instrument Serif + Geist |
+| Classic / garden | **Ink & Cream** (light) with a sage or blush accent | Playfair Display + Inter |
+| Romantic / blush | **Rose Quartz** (light) | Playfair Display + Inter |
+| Royal / festive | **Noir Gold** (dark) or **Terracotta** | Playfair Display + Inter |
+| Beach / modern | **Glacier** (light) | Playfair Display + Inter |
 
-Load the script face only for the couple’s names and a few flourish words:
-`family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Pinyon+Script&family=Hanken+Grotesk:wght@300..700`.
-Set `--font-mono` to the body font (labels are small uppercase, wide-tracked) and add `--font-script:'Pinyon Script',cursive`. **Do not** keep the core’s uppercase mono look; wedding labels are soft.
+Use the fixed Google Fonts link from A1 and promote Playfair Display to the display role (A3): `--font-display:'Playfair Display',Georgia,serif`. Names and headings are Playfair (italic for one flourish word at most); labels stay Rajdhani but soft: sentence case or light uppercase, small tracking. No script font.
 
 ### C3. Section order (all required)
 
-0. **Curtain intro** (replaces the core loader: **omit `<div class="loader">`**) — two panels and a wax-seal button “Open invitation”; skipped for returning visitors in the same session.
+0. **Curtain intro** (replaces the core loader: **omit `<div class="loader">`**) - two panels and a wax-seal button “Open invitation”; skipped for returning visitors in the same session.
 1. **Hero** — “We’re getting married”, names in script at huge scale, date and city, **countdown**, Save-the-date and RSVP buttons, floating petals.
 2. **Our story** — 4–5 timeline moments (how we met, first trip, the proposal…), alternating layout, each with a photo or generated art.
 3. **The details** — cards for each event (Ceremony, Reception, + optional Mehendi/Sangeet/Brunch): date, time, venue, dress code, a map link, and **Add to calendar** (.ics download).

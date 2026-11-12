@@ -25,10 +25,10 @@ Property buyers decide with their eyes and their wallets. Show **beautiful, larg
 
 | Positioning | Palette (A3) | Fonts |
 | --- | --- | --- |
-| Luxury / villas | **Noir Gold** | Cormorant Garamond + Hanken Grotesk |
-| Modern apartments, architecture | **Glacier** (light) | Instrument Serif + Geist |
-| Family homes, mid-market | **Clinic** or **Ink & Cream** (light) | Fraunces + DM Sans |
-| Commercial / developer | **Blueprint** or **Solar** | Space Grotesk + Geist |
+| Luxury / villas | **Noir Gold** | Playfair Display + Inter |
+| Modern apartments, architecture | **Glacier** (light) | Playfair Display + Inter |
+| Family homes, mid-market | **Clinic** or **Ink & Cream** (light) | Bebas Neue + Rajdhani + Inter |
+| Commercial / developer | **Blueprint** or **Solar** | Bebas Neue + Rajdhani + Inter |
 
 Generous space, large serif headings, thin dividers. Buttons are restrained (rounded pills in neutral or accent).
 
@@ -85,7 +85,7 @@ Use `<body data-art-kinds="skyline,grid,mesh">`. Total distinct photos ≥ 34. E
 
 .trust{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;padding-block:clamp(56px,8vw,100px) 0}
 @media (min-width:861px){.trust{grid-template-columns:repeat(4,1fr)}}
-.trust b{display:block;font:500 var(--step-4)/1 var(--font-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.trust b{display:block;font:400 var(--step-4)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 
 .list-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:2rem}
 .list-tools{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
@@ -103,7 +103,7 @@ Use `<body data-art-kinds="skyline,grid,mesh">`. Total distinct photos ≥ 34. E
 .tag-p{position:absolute;left:.8rem;top:.8rem;padding:.35rem .75rem;border-radius:var(--r-pill);background:var(--text);color:var(--bg);font:600 .68rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
 .save{position:absolute;right:.7rem;top:.7rem;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:20px;background:rgb(var(--bg-rgb,11 11 12) / .72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:transform var(--t-press)}
 .save:active{transform:scale(.9)}.save[aria-pressed="true"]{color:var(--accent)}
-.home-price{font:500 var(--step-2)/1 var(--font-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.home-price{font:400 var(--step-2)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .home h3{font:500 1.05rem/1.3 var(--font-body);letter-spacing:0}
 .home .loc{color:var(--text-2);display:flex;gap:.35rem;align-items:center;font-size:.92rem}
 .facts{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;color:var(--text-2);font-size:.9rem;padding-top:.7rem;border-top:1px solid var(--line)}
@@ -148,7 +148,7 @@ input[type=range].rng::-moz-range-thumb{width:18px;height:18px;border-radius:50%
 .donut .bg{stroke:var(--surface-2)}
 .donut .p{stroke:var(--accent);transition:stroke-dasharray .8s var(--ease-out)}
 .donut .i{stroke:var(--text-3);transition:stroke-dasharray .8s var(--ease-out),stroke-dashoffset .8s var(--ease-out)}
-.emi-big{font:500 var(--step-4)/1 var(--font-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.emi-big{font:400 var(--step-4)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .legend{display:flex;gap:1.4rem;flex-wrap:wrap;justify-content:center;color:var(--text-2);font-size:.9rem}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.4rem}
 

@@ -25,16 +25,16 @@ Turn a curious scroller into a **free-trial booking**. Energy, proof and clarity
 
 | Type | Palette (A3) | Fonts |
 | --- | --- | --- |
-| Strength, CrossFit, boxing | **Ember** or **Solar** | Barlow Condensed + Barlow + IBM Plex Mono |
-| Boutique / HIIT | **Mono Lime** | Archivo Black + Archivo + Space Mono |
-| Yoga, pilates, wellness | **Moss** or **Rose Quartz** (light) | Fraunces + DM Sans |
+| Strength, CrossFit, boxing | **Ember** or **Solar** | Bebas Neue + Rajdhani + Inter |
+| Boutique / HIIT | **Mono Lime** | Bebas Neue + Rajdhani + Inter |
+| Yoga, pilates, wellness | **Moss** or **Rose Quartz** (light) | Bebas Neue + Rajdhani + Inter |
 
 Headings in uppercase condensed type, tight leading, huge scale. Photography is high-contrast and cropped tight; apply a dark scrim under all text.
 
 ### C3. Section order (all required)
 
 1. **Hero** — full-bleed training photo with scrim, giant uppercase headline, subline, **Start free trial** + **View schedule**, three trust chips (members, rating, years).
-2. **Marquee** — class names and values (“STRENGTH · HIIT · BOXING · MOBILITY”).
+2. **Class strip** — a static row of class names (Strength, HIIT, Boxing, Mobility). Not scrolling; the photo marquee below is the only marquee.
 3. **Numbers** — 4 counters (members, classes/week, coaches, sq ft).
 4. **Programs** — 4–6 program cards with image, level, duration and a hover reveal.
 5. **Class schedule** — day tabs (default: today) with a time table; each class has coach, level, spots left and a **Book** button that works.
@@ -86,7 +86,7 @@ h1,h2,h3{text-transform:uppercase}
 .nums{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media (min-width:861px){.nums{grid-template-columns:repeat(4,1fr)}}
 .num-card{padding:clamp(18px,3vw,32px);border:1px solid var(--line);border-radius:12px}
-.num-card b{display:block;font:700 var(--step-4)/1 var(--font-display);letter-spacing:-.02em;color:var(--accent);font-variant-numeric:tabular-nums}
+.num-card b{display:block;font:400 var(--step-4)/1 var(--font-display);letter-spacing:.02em;color:var(--accent);font-variant-numeric:tabular-nums}
 
 /* programs */
 .programs{display:grid;gap:12px}
@@ -140,7 +140,7 @@ h1,h2,h3{text-transform:uppercase}
 .ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
 .ba:focus-within .handle::after{outline:2px solid var(--accent);outline-offset:3px}
 .ba-stats{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1.4rem}
-.ba-stats b{display:block;font:700 var(--step-3)/1 var(--font-display);color:var(--accent)}
+.ba-stats b{display:block;font:400 var(--step-3)/1 var(--font-display);color:var(--accent)}
 
 /* pricing */
 .toggle{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:8px}
@@ -150,7 +150,7 @@ h1,h2,h3{text-transform:uppercase}
 @media (min-width:861px){.plans{grid-template-columns:repeat(3,1fr)}}
 .plan{display:flex;flex-direction:column;gap:1.2rem;border-radius:14px}
 .plan.pop{border-color:var(--accent);background:linear-gradient(180deg,rgb(var(--accent-rgb) / .12),var(--surface) 45%)}
-.price{font:700 var(--step-4)/1 var(--font-display);font-variant-numeric:tabular-nums}
+.price{font:400 var(--step-4)/1 var(--font-display);font-variant-numeric:tabular-nums}
 .price small{font:400 var(--step-0)/1 var(--font-body);color:var(--text-2);letter-spacing:0;text-transform:none}
 .plan ul{display:grid;gap:.7rem;flex:1;color:var(--text-2)}.plan li{display:flex;gap:.6rem}.plan li i{color:var(--accent);margin-top:.28rem}
 
@@ -159,17 +159,17 @@ h1,h2,h3{text-transform:uppercase}
 @media (min-width:861px){.calc{grid-template-columns:1fr 1fr}}
 .row2{display:grid;gap:12px;grid-template-columns:1fr 1fr}
 .result{display:grid;gap:1rem;align-content:start}
-.big{font:700 var(--step-5)/.9 var(--font-display);color:var(--accent);font-variant-numeric:tabular-nums}
+.big{font:400 var(--step-5)/.9 var(--font-display);color:var(--accent);font-variant-numeric:tabular-nums}
 .bmi-scale{height:10px;border-radius:99px;background:linear-gradient(90deg,#4f8cff 0 18.5%,var(--ok) 18.5% 25%,#f2b441 25% 30%,var(--err) 30% 100%);position:relative;margin-top:.4rem}
 .bmi-scale i{position:absolute;top:50%;width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--bg);translate:-50% -50%;left:var(--at,0%);transition:left .8s var(--ease-out)}
 .macros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .macros div{padding:.9rem;border:1px solid var(--line);border-radius:10px;text-align:center}
-.macros b{display:block;font:700 var(--step-2)/1 var(--font-display)}
+.macros b{display:block;font:400 var(--step-2)/1 var(--font-display)}
 .macros small{color:var(--text-2);font:500 .7rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
 
 .reviews{display:grid;gap:12px}@media (min-width:861px){.reviews{grid-template-columns:repeat(3,1fr)}}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.2rem 0;font:600 var(--step-1)/1.3 var(--font-display);text-transform:uppercase}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.2rem 0;font:400 var(--step-1)/1.3 var(--font-display);text-transform:uppercase}
 .faq summary::-webkit-details-marker{display:none}.faq summary i{transition:transform .4s var(--ease-out)}
 .faq details[open] summary i{transform:rotate(45deg)}.faq .ans{padding-bottom:1.3rem;color:var(--text-2);max-width:62ch}
 .trial{display:grid;gap:clamp(24px,5vw,72px)}@media (min-width:861px){.trial{grid-template-columns:1fr 1fr}}

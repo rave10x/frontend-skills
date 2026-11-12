@@ -76,7 +76,7 @@ Rules:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Brand — one-line value proposition</title>
+  <title>Brand: one-line value proposition</title>
   <meta name="description" content="150–160 chars, real copy.">
   <meta name="theme-color" content="#0b0b0c">
   <!-- fonts + css cdns -->
@@ -123,12 +123,13 @@ Motion goes last on purpose: if the static page is not good, animation will not 
 
 - [ ] Reads correctly at 390px, 768px and 1440px. No horizontal scroll.
 - [ ] No Lorem Ipsum. Copy is specific to the business, with real-feeling numbers, names and prices.
-- [ ] One display font + one body font (max three families). Not Inter/Roboto/Arial as the display face.
-- [ ] No purple-gradient-on-white, no identical alternating image/text rows, no emoji as icons.
+- [ ] The fixed type system from `html-palette-type` is used (Bebas Neue display, Rajdhani labels, Playfair quotes, Inter body, JetBrains Mono numbers). Inter is never the display face.
+- [ ] No purple-gradient-on-white, no emoji as icons, no 3 image/text splits in a row, no zero-meaning decoration (section numbers, status dots, locale strips, scroll cues), at most one eyebrow per 3 sections, at most one marquee.
+- [ ] Zero em-dashes or en-dashes in visible copy (this includes the `<title>`).
 - [ ] Contrast: body text ≥ 4.5:1, large text ≥ 3:1, including on images (use a scrim).
 - [ ] Every interactive element has hover (pointer-gated), `:active` and `:focus-visible` states.
 - [ ] `prefers-reduced-motion` handled; no animation blocks content from being readable.
-- [ ] Visual budget: hero visual, ≥ 14 photos from the verified library (`IMAGE-LIBRARY.md`), a gallery with lightbox, portraits on every testimonial; images have `alt`, `width`/`height`; below-fold images are `loading="lazy"`; observed reveal elements are never `clip-path`ed.
+- [ ] Visual budget scaled to the brief: a real hero visual, photos from the verified library (`IMAGE-LIBRARY.md`) only where they serve the content, a gallery only for visual briefs, portraits on every testimonial; images have `alt`, `width`/`height`; below-fold images are `loading="lazy"`; observed reveal elements are never `clip-path`ed.
 - [ ] Heading order is logical (one `h1`). Nav anchors match section ids.
 - [ ] Only `transform`/`opacity` animate. No `transition: all`.
 - [ ] Works if JS fails: content is visible by default; JS adds the hidden/animated state, never the reverse.

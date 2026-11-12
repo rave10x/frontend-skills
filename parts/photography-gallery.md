@@ -23,9 +23,9 @@ Let the images lead. The interface is a quiet frame: neutral surfaces, small pre
 
 ### C2. Direction
 
-- **Gallery Black** — near-black surfaces (`#0a0a0a`), Mono Lime or Noir Gold accent used sparingly, Cormorant Garamond + Hanken Grotesk.
-- **Gallery White** — Glacier or Ink & Cream (light), Instrument Serif + Geist; photographs pop against white.
-- **Documentary** — Mono Lime/Brutalist, Archivo + Space Mono, hard grid, captions like contact-sheet metadata.
+- **Gallery Black** — near-black surfaces (`#0a0a0a`), Mono Lime or Noir Gold accent used sparingly, Playfair Display + Inter.
+- **Gallery White** — Glacier or Ink & Cream (light), Playfair Display + Inter; photographs pop against white.
+- **Documentary** — Mono Lime/Brutalist, Bebas Neue + Rajdhani + Inter, hard grid, captions like contact-sheet metadata.
 
 Photos are never filtered with heavy overlays; use a subtle scrim only under text.
 
@@ -99,7 +99,7 @@ Use `<body data-art-kinds="mesh,topo,rings">`. Total distinct photos ≥ 40.
 .pkgs{display:grid;gap:12px}
 @media (min-width:861px){.pkgs{grid-template-columns:repeat(3,1fr)}}
 .pkg{display:flex;flex-direction:column;gap:1rem}
-.pkg .price{font:500 var(--step-3)/1 var(--font-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.pkg .price{font:400 var(--step-3)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .pkg ul{display:grid;gap:.6rem;flex:1;color:var(--text-2)}
 .pkg li{display:flex;gap:.6rem}.pkg li i{color:var(--accent);margin-top:.3rem}
 .pkg.pop{border-color:var(--accent)}
@@ -168,10 +168,10 @@ All photos come from the verified library (A4.2) following the visual plan (C3b)
 
 ```
 Build a website for ANAYA DESAI, a documentary wedding photographer based in Udaipur (travels worldwide). Mood: warm, intimate, film-like.
-Palette: Noir Gold, Cormorant Garamond. Series: invent 5. Packages: invent 3 in INR.
+Palette: Noir Gold, Playfair Display + Inter. Series: invent 5. Packages: invent 3 in INR.
 ```
 
 ```
 Build a website for STUDIO NORD, an architectural photography practice in Oslo. Mood: cold, precise, minimal.
-Palette: Glacier (light), Instrument Serif. Series: invent 4. Packages: invent 3 in NOK.
+Palette: Glacier (light), Playfair Display + Inter. Series: invent 4. Packages: invent 3 in NOK.
 ```

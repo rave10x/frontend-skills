@@ -26,7 +26,7 @@ Example (any of the ten):
 ### What every prompt includes
 
 - Pinned CDN manifest and Tabler icon rules
-- 14 palettes and 8 font pairings, expressed as CSS tokens
+- 14 palettes expressed as CSS tokens, and one fixed type system (Bebas Neue display, Rajdhani labels, Playfair Display quotes, Inter body, JetBrains Mono numbers)
 - A **visual budget**: a real hero visual, at least 14 photos (24–40 for photography, wedding, real estate, e-commerce), a gallery section with lightbox, portraits on every testimonial/team/agent/coach, no run of text-only sections
 - A **verified photo library** (see below) and a per-type **visual plan** naming exactly which photos go in which section
 - **Generated art under every image slot** (10 SVG styles: mesh, waves, topo, rings, grid, skyline, rays, petals, plate, stripes) so a slow or blocked photo never leaves a hole
@@ -45,10 +45,6 @@ Example (any of the ten):
 ## 4. Skills (`skills/`)
 
 Smaller, composable Claude Code skills (`SKILL.md`): `html-site-foundation` (start here), `html-landing-page`, `html-palette-type`, `html-motion-system`, `html-interaction-details`, `html-icons-tabler`, `html-threejs-scenes`, `html-kinetic-type`. Copy a folder into `~/.claude/skills/` to install it.
-
-## 5. Love stories (`love-stories/`)
-
-A different kind of page: **cinematic, illustrated love-story pages** driven by scroll (an apology when she isn't talking, flirty date invites, long distance, proposals, anniversaries, a Mars-and-Venus understanding story, comfort, birthdays). Almost no text, no photo squares, the screen fills with flowers at the turning point, and it ends with a Yes / No question. Paste [`love-stories/LOVE-STORY-SKILL.md`](love-stories/LOVE-STORY-SKILL.md) into any AI, tell it the topic, and it writes a short story script that a tested engine turns into the page. 11 ready examples are in [`love-stories/examples/`](love-stories/examples/). See [`love-stories/README.md`](love-stories/README.md).
 
 ## 6. Maintaining the prompts
 

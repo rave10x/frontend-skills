@@ -25,20 +25,20 @@ The visitor is a recruiter, founder or client deciding in 20 seconds whether to 
 
 | Direction | Palette (A3) | Fonts | Feel |
 | --- | --- | --- | --- |
-| **Editorial** (designers, writers, art directors) | Ink & Cream | Instrument Serif + Geist | Big serif name, lots of white space, italic accents |
-| **Dark Tech** (developers, creative technologists) | Mono Lime or Blueprint | Space Grotesk + Geist + JetBrains Mono | Mono labels, grid lines, terminal-ish details |
-| **Warm Craft** (illustrators, motion, makers) | Terracotta | Fraunces + DM Sans | Soft shapes, warm greys, tactile grain |
+| **Editorial** (designers, writers, art directors) | Ink & Cream | Playfair Display + Inter | Big serif name, lots of white space, italic accents |
+| **Dark Tech** (developers, creative technologists) | Mono Lime or Blueprint | Bebas Neue + Rajdhani + Inter | Mono labels, grid lines, terminal-ish details |
+| **Warm Craft** (illustrators, motion, makers) | Terracotta | Bebas Neue + Rajdhani + Inter | Soft shapes, warm greys, tactile grain |
 
 Set `--accent-rgb`, `--bg-rgb` and `--on-accent` consistently with the palette.
 
 ### C3. Section order (all required)
 
-1. **Hero** — name as a huge `data-split` headline, role line, location + live local time, two CTAs (View work / Email me), scroll cue.
+1. **Hero** — name as a huge `data-split` headline, role line, two CTAs (View work / Email me). No scroll cue.
 2. **Statement** — one paragraph (40–60 words) whose words light up as you scroll.
 3. **Selected work** — 4–6 projects as a list-as-table with a cursor-following preview (desktop) and inline art thumbnails (mobile).
 4. **Capabilities** — 3 columns, each an icon tile + title + 4–5 bullet skills.
 5. **Experience** — rows: years · company · role · one-line impact.
-6. **Tools marquee** — tool/skill names scrolling.
+6. **Tools** — tool and skill names as a calm grouped list (design, code, motion). Not scrolling.
 7. **Kind words** — 3 testimonial cards with real-sounding names, roles, companies, and a concrete outcome.
 8. **Contact** — giant email link, copy-to-clipboard button, short form, social links.
 9. **Footer** — name, local time, socials, © year, "Back to top".
@@ -80,7 +80,7 @@ Every project gets a unique `.art` tile built from CSS gradients, so the portfol
     var(--c0,#0e0e10)}
 .art::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;mix-blend-mode:overlay;
   background:repeating-linear-gradient(90deg,rgb(255 255 255 / .06) 0 1px,transparent 1px 48px),repeating-linear-gradient(0deg,rgb(255 255 255 / .06) 0 1px,transparent 1px 48px)}
-.art .glyph{position:absolute;left:1rem;bottom:.6rem;font:500 clamp(3rem,9vw,6rem)/1 var(--font-display);letter-spacing:-.05em;color:rgb(255 255 255 / .92);mix-blend-mode:overlay}
+.art .glyph{position:absolute;left:1rem;bottom:.6rem;font:400 clamp(3rem,9vw,6rem)/1 var(--font-display);letter-spacing:.02em;color:rgb(255 255 255 / .92);mix-blend-mode:overlay}
 .art .tag{position:absolute;top:1rem;left:1rem}
 ```
 
@@ -105,14 +105,14 @@ Every project gets a unique `.art` tile built from CSS gradients, so the portfol
 @keyframes nudge{50%{transform:translateY(6px)}}
 
 /* statement */
-.statement{font:400 var(--step-3)/1.12 var(--font-display);letter-spacing:-.025em;max-width:24em}
+.statement{font:400 var(--step-3)/1.12 var(--font-display);letter-spacing:.02em;max-width:24em}
 .statement .w{opacity:.2;transition:opacity .4s}
 
 /* work list */
 .work-list{border-top:1px solid var(--line)}
 .work-row a{display:grid;grid-template-columns:auto 1fr auto;gap:.5rem 1rem;align-items:baseline;padding:clamp(18px,2.6vw,30px) 0;border-bottom:1px solid var(--line);transition:padding var(--t-pop) var(--ease-out),color var(--t-hover)}
 .w-num{color:var(--text-3)}
-.w-title{font:500 var(--step-3)/1 var(--font-display);letter-spacing:-.03em}
+.w-title{font:400 var(--step-3)/1 var(--font-display);letter-spacing:.02em}
 .w-meta{grid-column:2;color:var(--text-2);font-size:var(--step--1)}
 .work-row .ti{grid-row:1;grid-column:3;font-size:1.6rem;transition:transform var(--t-pop) var(--ease-out)}
 .row-thumb{grid-column:1/-1;margin-top:.75rem}
@@ -145,12 +145,12 @@ Every project gets a unique `.art` tile built from CSS gradients, so the portfol
 /* testimonials */
 .quote-grid{display:grid;gap:clamp(12px,2vw,24px)}
 @media (min-width:861px){.quote-grid{grid-template-columns:repeat(3,1fr)}}
-.quote p{font:400 var(--step-1)/1.35 var(--font-display);letter-spacing:-.01em}
+.quote p{font:400 var(--step-1)/1.35 var(--font-display);letter-spacing:.02em}
 .who{display:flex;align-items:center;gap:.8rem;margin-top:1.5rem}
 .avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);font-weight:600}
 
 /* contact */
-.mega-mail{display:block;font:500 clamp(2.2rem,9.5vw,8rem)/1 var(--font-display);letter-spacing:-.045em;word-break:break-word}
+.mega-mail{display:block;font:400 clamp(2.2rem,9.5vw,8rem)/1 var(--font-display);letter-spacing:.02em;word-break:break-word}
 .contact-row{display:grid;gap:clamp(24px,5vw,64px);margin-top:clamp(32px,5vw,64px)}
 @media (min-width:861px){.contact-row{grid-template-columns:1fr 1fr}}
 .socials{display:flex;gap:.6rem;flex-wrap:wrap}
@@ -186,7 +186,6 @@ Every project gets a unique `.art` tile built from CSS gradients, so the portfol
 
 ```html
 <section class="sec" id="about"><div class="wrap">
-  <p class="eyebrow" data-reveal>About</p>
   <p class="statement" data-statement>I believe good software feels inevitable. For nine years I have helped teams at Monzo, Flutterwave and two health startups turn messy workflows into products people trust, cutting task time by 40% on average and shipping design systems used by 60+ engineers.</p>
 </div></section>
 ```
@@ -216,7 +215,6 @@ Every project gets a unique `.art` tile built from CSS gradients, so the portfol
 
 ```html
 <section class="sec" id="contact"><div class="wrap">
-  <p class="eyebrow" data-reveal>Contact</p>
   <a class="mega-mail link-u" href="mailto:hello@mayaokonkwo.com" data-cursor data-reveal style="--i:1">hello@mayaokonkwo.com</a>
   <div class="contact-row">
     <div class="stack" data-reveal>
@@ -228,7 +226,7 @@ Every project gets a unique `.art` tile built from CSS gradients, so the portfol
         <a href="https://github.com/yourname" aria-label="GitHub"><i class="ti ti-brand-github" aria-hidden="true"></i></a>
       </div>
     </div>
-    <form data-form data-success="Thanks — I’ll reply within two working days." class="stack" style="--stack:1rem;--i:2" data-reveal>
+    <form data-form data-success="Thanks - I’ll reply within two working days." class="stack" style="--stack:1rem;--i:2" data-reveal>
       <div class="field"><label for="n">Name</label><input id="n" name="name" autocomplete="name" required placeholder="Ada Lovelace"></div>
       <div class="field"><label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="ada@company.com"></div>
       <div class="field"><label for="m">Project</label><textarea id="m" name="message" required placeholder="What are you building, and by when?"></textarea></div>
@@ -297,7 +295,7 @@ Every project gets a unique `.art` tile built from CSS gradients, so the portfol
 - **Projects (4–6)**: invent client names that sound real but are not famous trademarks; each has a one-line problem and a **measurable outcome** ("Checkout drop-off −31%", "Shipped to 2M users"), year, and 2–3 role tags. Never link to fake case studies: use `href="#"` and tell the owner to replace.
 - **Capabilities**: three headings such as *Product design*, *Systems & code*, *Research & strategy* with 4–5 concrete skills each.
 - **Experience**: 3–4 roles, newest first, with year ranges and one impact line each.
-- **Tools marquee**: 10–14 tools relevant to the field (Figma, Framer, React, TypeScript, Webflow, Blender, After Effects…).
+- **Tools list**: 10–14 tools relevant to the field (Figma, Framer, React, TypeScript, Webflow, Blender, After Effects…).
 - **Testimonials**: first name + surname initial, title, company, one specific outcome sentence.
 - **Tone**: first person, confident, plain language, one personality detail (a hobby or a belief).
 
@@ -325,6 +323,6 @@ Fable (children's reading app), Grid (design-token tool). Email: hello@kavyarao.
 
 ```
 Build my portfolio. Name: Tomás Ibarra. Role: Art director & motion designer. Based in: Lisbon.
-Style: editorial (Ink & Cream, Instrument Serif). Projects: Casa Verde rebrand, Nocturne title sequence,
+Style: editorial (Ink & Cream, Playfair Display + Inter). Projects: Casa Verde rebrand, Nocturne title sequence,
 Maré magazine, Sol festival identity, Olho exhibition. Email: ola@tomasibarra.studio.
 ```

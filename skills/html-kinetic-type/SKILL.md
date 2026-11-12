@@ -119,10 +119,10 @@ Stack two or three copies of the word with different stroke colours and a 80–1
 ## 4. Variable-font weight and width shifts
 
 ```css
-h1{font-family:'Fraunces',serif;font-variation-settings:'wght' 300,'opsz' 144;transition:font-variation-settings .5s var(--ease-out)}
-@media (hover:hover){h1:hover{font-variation-settings:'wght' 800,'opsz' 144}}
+h1{font-family:'Inter',sans-serif;font-variation-settings:'wght' 300,'opsz' 32;transition:font-variation-settings .5s var(--ease-out)}
+@media (hover:hover){h1:hover{font-variation-settings:'wght' 800,'opsz' 32}}
 ```
-Load only the variable axes needed from Google Fonts (`family=Fraunces:opsz,wght@9..144,300..900`). Scroll-scrub the axis with GSAP: `gsap.to(h,{fontVariationSettings:"'wght' 800", scrollTrigger:{…scrub:true}})`. Changing weight reflows lines; reserve width (`min-width`) or use it on single-line display text.
+Load only the variable axes needed from Google Fonts (`family=Inter:opsz,wght@14..32,200..800`). Bebas Neue is single-weight, so use this only on a body-face line or a deliberate Inter headline. Scroll-scrub the axis with GSAP: `gsap.to(h,{fontVariationSettings:"'wght' 800", scrollTrigger:{…scrub:true}})`. Changing weight reflows lines; reserve width (`min-width`) or use it on single-line display text.
 
 ## 5. Text marquee with scroll-velocity
 

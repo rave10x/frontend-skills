@@ -3,7 +3,7 @@
 
 > **HOW TO USE**
 > 1. Paste this ENTIRE file into any capable AI (Claude, GPT, Gemini…).
-> 2. Then send: `Build a landing page for <PRODUCT> — <one line what it does> for <AUDIENCE>. Palette: <name or "you choose">. Pricing: <tiers or "you invent">.`
+> 2. Then send: `Build a landing page for <PRODUCT> - <one line what it does> for <AUDIENCE>. Palette: <name or "you choose">. Pricing: <tiers or "you invent">.`
 > 3. The AI returns a single `index.html`. Save it and deploy anywhere.
 
 If any detail is missing, **invent believable specifics** instead of asking questions.
@@ -23,19 +23,19 @@ Move one kind of visitor to one action (start free trial / book a demo / join wa
 
 ### C2. Direction
 
-Default **Blueprint** (dark) with Space Grotesk + Geist + JetBrains Mono. Alternatives: **Mint Ledger** (fintech), **Clinic** (health/B2B, light), **Violet Hour** (AI/creative tools), **Glacier** (light, enterprise). The product mock-up is the visual star, so keep the rest disciplined.
+Default **Blueprint** (dark) with Bebas Neue + Rajdhani + Inter. Alternatives: **Mint Ledger** (fintech), **Clinic** (health/B2B, light), **Violet Hour** (AI/creative tools), **Glacier** (light, enterprise). The product mock-up is the visual star, so keep the rest disciplined.
 
 ### C3. Section order (all required)
 
-1. **Hero** — eyebrow pill (“New · v2.0”), h1 (outcome, 5–9 words), subhead (≤ 22 words), primary + secondary CTA, tiny reassurance line, **animated product mock-up** below/right.
-2. **Logo marquee** — 8–10 invented customer wordmarks as text in a muted colour.
+1. **Hero** — h1 (outcome, 5–9 words), subhead (≤ 22 words), primary + secondary CTA, tiny reassurance line, **animated product mock-up** below/right.
+2. **Logo wall** (static, below the hero, logos only, no captions) — 6 to 8 invented customers as clean SVG monograms or real Simple Icons marks in a muted colour. No scrolling.
 3. **Problem → solution** — a two-column statement: the old way (struck-through list) vs. the new way.
 4. **Feature bento** — 6 tiles of different sizes, each with icon tile, title, one-sentence benefit, and one small visual.
 5. **How it works** — sticky stage: 3 steps on the left, a device stage on the right that swaps screens as steps scroll by.
 6. **Numbers** — 4 counters (users, time saved, uptime, integrations).
 7. **Testimonials** — 3 cards, one featured large, concrete results.
 8. **Pricing** — monthly/annual toggle, 3 tiers, middle highlighted.
-9. **FAQ** — 6 `<details>` items that remove objections.
+9. **FAQ** - 6 `<details>` items that remove objections.
 10. **Final CTA** — big headline, one button, risk reversal line.
 11. **Footer** — product, company, resources, legal; newsletter optional.
 
@@ -87,7 +87,7 @@ Use `<body data-art-kinds="mesh,grid,rings">`. Total distinct photos ≥ 16.
 @media (min-width:600px){.kpis{grid-template-columns:repeat(4,1fr)}}
 .kpi{padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--bg)}
 .kpi small{color:var(--text-3);font:500 .7rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
-.kpi strong{display:block;margin-top:.5rem;font:600 clamp(1.3rem,2.4vw,1.8rem)/1 var(--font-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.kpi strong{display:block;margin-top:.5rem;font:400 clamp(1.3rem,2.4vw,1.8rem)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .kpi em{font-style:normal;font-size:.75rem;color:var(--ok)}
 .chart{border:1px solid var(--line);border-radius:14px;background:var(--bg);padding:14px}
 .chart svg{width:100%;height:auto}
@@ -103,7 +103,7 @@ Use `<body data-art-kinds="mesh,grid,rings">`. Total distinct photos ≥ 16.
 
 /* logos */
 .logos{display:flex;gap:3rem;align-items:center;width:max-content;animation:marq 40s linear infinite}
-.logos span{font:600 1.4rem/1 var(--font-display);letter-spacing:-.04em;color:var(--text-3);white-space:nowrap}
+.logos span{font:400 1.4rem/1 var(--font-display);letter-spacing:.02em;color:var(--text-3);white-space:nowrap}
 
 /* problem / solution */
 .vs{display:grid;gap:clamp(12px,2vw,24px)}
@@ -140,11 +140,11 @@ Use `<body data-art-kinds="mesh,grid,rings">`. Total distinct photos ≥ 16.
 .stats{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
 @media (min-width:861px){.stats{grid-template-columns:repeat(4,1fr)}}
 .stat{padding:clamp(18px,3vw,32px);border-top:1px solid var(--line)}
-.stat b{display:block;font:500 var(--step-4)/1 var(--font-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.stat b{display:block;font:400 var(--step-4)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .quotes{display:grid;gap:12px}
 @media (min-width:861px){.quotes{grid-template-columns:1.4fr 1fr;grid-auto-rows:auto}.quotes .big{grid-row:span 2}}
 .quotes blockquote{font:400 var(--step-1)/1.4 var(--font-body)}
-.quotes .big blockquote{font:400 var(--step-2)/1.2 var(--font-display);letter-spacing:-.02em}
+.quotes .big blockquote{font:400 var(--step-2)/1.2 var(--font-display);letter-spacing:.02em}
 
 /* pricing */
 .toggle{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--surface)}
@@ -155,14 +155,14 @@ Use `<body data-art-kinds="mesh,grid,rings">`. Total distinct photos ≥ 16.
 @media (min-width:861px){.plans{grid-template-columns:repeat(3,1fr);align-items:stretch}}
 .plan{display:flex;flex-direction:column;gap:1.2rem}
 .plan.pop{border-color:var(--accent);background:linear-gradient(180deg,rgb(var(--accent-rgb) / .08),var(--surface) 40%)}
-.price{font:500 var(--step-4)/1 var(--font-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.price{font:400 var(--step-4)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .price small{font:400 var(--step-0)/1 var(--font-body);color:var(--text-2);letter-spacing:0}
 .plan ul{display:grid;gap:.7rem;flex:1}
 .plan li{display:flex;gap:.6rem;color:var(--text-2)}.plan li i{color:var(--accent);margin-top:.25rem}
 
 /* faq */
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.2rem 0;font:500 var(--step-1)/1.3 var(--font-display);letter-spacing:-.01em}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.2rem 0;font:400 var(--step-1)/1.3 var(--font-display);letter-spacing:.02em}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary i{transition:transform .4s var(--ease-out);flex:none}
 .faq details[open] summary i{transform:rotate(45deg)}
@@ -218,9 +218,9 @@ Note: `.chart` reveals through `data-reveal` and the CSS above draws its line on
   <p class="eyebrow" data-reveal>How it works</p><h2 data-reveal style="max-width:16ch">From signup to insight in ten minutes</h2>
   <div class="steps" style="margin-top:3rem">
     <div>
-      <article class="step" data-step="0"><span class="n">01 / CONNECT</span><h3>Plug in your data</h3><p class="muted">One-click connections to Stripe, Postgres and 40 other sources. No engineers needed.</p></article>
-      <article class="step" data-step="1"><span class="n">02 / MODEL</span><h3>Describe what you want to know</h3><p class="muted">Ask in plain English; we write the query and show you the work.</p></article>
-      <article class="step" data-step="2"><span class="n">03 / SHARE</span><h3>Send a live dashboard</h3><p class="muted">Share a link, schedule a digest, or embed it where your team already works.</p></article>
+      <article class="step" data-step="0"><span class="n">Connect</span><h3>Plug in your data</h3><p class="muted">One-click connections to Stripe, Postgres and 40 other sources. No engineers needed.</p></article>
+      <article class="step" data-step="1"><span class="n">Model</span><h3>Describe what you want to know</h3><p class="muted">Ask in plain English; we write the query and show you the work.</p></article>
+      <article class="step" data-step="2"><span class="n">Share</span><h3>Send a live dashboard</h3><p class="muted">Share a link, schedule a digest, or embed it where your team already works.</p></article>
     </div>
     <div class="stage" aria-hidden="true">
       <div class="screen on"><div class="tile"><i class="ti ti-brand-stripe"></i>Stripe · connected</div><div class="tile"><i class="ti ti-database"></i>Postgres · syncing 82%</div><div class="tile"><i class="ti ti-brand-google-analytics"></i>Analytics · ready</div></div>

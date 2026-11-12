@@ -25,15 +25,15 @@ Make people hungry, then make booking effortless. 70% of visitors are on a phone
 
 | Venue | Palette (A3) | Fonts |
 | --- | --- | --- |
-| Fine dining, wine bar | Noir Gold or Terracotta | Cormorant Garamond + Hanken Grotesk |
-| Neighbourhood bistro, bakery | Terracotta or Citrus (light) | Fraunces + DM Sans |
-| Specialty coffee | Ink & Cream or Moss | Instrument Serif + Geist |
-| Street food, burgers, bar | Ember or Citrus | Bricolage Grotesque + Outfit |
+| Fine dining, wine bar | Noir Gold or Terracotta | Playfair Display + Inter |
+| Neighbourhood bistro, bakery | Terracotta or Citrus (light) | Bebas Neue + Rajdhani + Inter |
+| Specialty coffee | Ink & Cream or Moss | Playfair Display + Inter |
+| Street food, burgers, bar | Ember or Citrus | Bebas Neue + Rajdhani + Inter |
 
 ### C3. Section order (all required)
 
 1. **Hero** — full-bleed photo with slow settle, restaurant name, one-line promise, “Book a table” + “See menu”, and an **Open now / Closed** pill computed from real hours.
-2. **Marquee** — signature words (“Wood-fired · Seasonal · Local · Natural wine”).
+2. **Signature words** — a static line of 3 or 4 words. Not scrolling; the photo marquee below is the only marquee.
 3. **Story** — split layout with an `img-reveal` photo and a short chef/owner paragraph; a parallax second photo; 3 facts (est. year, covers per night, farms we buy from).
 4. **Menu** — accessible tabs (Starters · Mains · Desserts · Drinks), each with 5–6 items: name, description, price, dietary tags (V, VG, GF).
 5. **Signature dishes** — 3 large image cards with hover zoom.
@@ -87,7 +87,7 @@ Use `<body data-art-kinds="plate,waves,mesh">`. Total distinct photos ≥ 24.
 @media (min-width:861px){.story{grid-template-columns:1fr 1fr}}
 .story .media{aspect-ratio:4/5;border-radius:var(--r-lg)}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
-.facts b{display:block;font:500 var(--step-3)/1 var(--font-display);letter-spacing:-.03em}
+.facts b{display:block;font:400 var(--step-3)/1 var(--font-display);letter-spacing:.02em}
 .facts span{color:var(--text-2);font-size:var(--step--1)}
 .parallax-frame{overflow:hidden;border-radius:var(--r-lg);aspect-ratio:16/9;margin-top:clamp(24px,5vw,72px)}
 .parallax-frame .media{height:100%;border-radius:0}
@@ -103,7 +103,7 @@ Use `<body data-art-kinds="plate,waves,mesh">`. Total distinct photos ≥ 24.
 @media (min-width:861px){.menu-panel.on{grid-template-columns:1fr 1fr}}
 .dish{padding:1.3rem 0;border-bottom:1px dashed var(--line);display:grid;grid-template-columns:1fr auto;gap:.3rem 1rem;opacity:0;transform:translateY(10px);animation:dishIn .6s var(--ease-out) forwards;animation-delay:calc(var(--k)*60ms)}
 @keyframes dishIn{to{opacity:1;transform:none}}
-.dish h3{font:500 var(--step-1)/1.2 var(--font-display);letter-spacing:-.01em}
+.dish h3{font:400 var(--step-1)/1.2 var(--font-display);letter-spacing:.02em}
 .dish .price{font:500 var(--step-0)/1 var(--font-mono);color:var(--accent);font-variant-numeric:tabular-nums}
 .dish p{grid-column:1;color:var(--text-2);font-size:.95rem;max-width:42ch}
 .tags{display:flex;gap:.35rem;grid-column:1/-1}

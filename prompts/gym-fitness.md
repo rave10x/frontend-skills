@@ -26,7 +26,7 @@ Everything below the line "REFERENCE IMPLEMENTATION" is tested code. **Copy it v
 5. **One direction, one signature moment.** Choose a single aesthetic and one unforgettable detail (a kinetic headline, a 3D hero, a pinned scroll story, an unexpected colour hit). Everything else supports it quietly.
 6. **Progressive enhancement.** Content is visible without JS. JS adds the hidden/animated state (the reference CSS already does this through the `.js` class).
 7. **Accessible by default.** Semantic landmarks, one `h1`, labelled controls, visible `:focus-visible`, contrast ≥ 4.5:1 (3:1 for large text), `prefers-reduced-motion` honoured, `alt` on every image.
-8. **No emoji as icons**, no Font Awesome, no purple-gradient-on-white, no identical image-left/text-right rows repeated, no Inter/Roboto/Arial as the display font.
+8. **No emoji as icons**, no Font Awesome, no purple-gradient-on-white, no repeated image-left/text-right rows (never 3 split sections in a row), no Inter/Roboto/Arial as the display font. **Zero em-dashes (`—`) or en-dashes (`–`) anywhere in visible copy**; use a comma, colon, full stop or a plain hyphen.
 9. **Only animate `transform` and `opacity`** (plus `clip-path`). Never `transition: all`. Never `ease-in` on UI.
 10. **Placeholders must be swappable:** put contact details, social URLs and form action in obvious places and mention them in the closing notes.
 11. **Visual-first.** A page without rich imagery is a failed page. Obey the VISUAL BUDGET in A4: a real hero visual, at least 14 photos, a gallery section with lightbox, portraits wherever there are people, and no run of text-only sections.
@@ -37,7 +37,7 @@ Everything below the line "REFERENCE IMPLEMENTATION" is tested code. **Copy it v
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- FONTS_LINK: replace with the Google Fonts <link> for the chosen pairing (display=swap, only weights used) -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,200..800&family=Playfair+Display:ital,wght@0,400..800;1,400..600&family=JetBrains+Mono:wght@400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Icons: Tabler Icons webfont (outline icons: <i class="ti ti-NAME"></i>) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.49.0/dist/tabler-icons.min.css">
@@ -62,7 +62,7 @@ Reliable names: `arrow-right`, `arrow-up-right`, `arrow-narrow-right`, `menu-2`,
 
 ### A3. Palette & type decisions
 
-Pick ONE palette and ONE font pairing for the brief. The palette is expressed only as the CSS variables in the reference `:root` (override those values; never hard-code colours elsewhere).
+Pick ONE palette for the brief. The type system is fixed (below); do not swap fonts. The palette is expressed only as the CSS variables in the reference `:root` (override those values; never hard-code colours elsewhere).
 
 | Palette | Mood | `--bg` | `--surface` | `--text` | `--accent` | `--accent-2` |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -83,30 +83,51 @@ Pick ONE palette and ONE font pairing for the brief. The palette is expressed on
 
 For light palettes also set `--text-2`/`--text-3`/`--line` as dark-with-alpha and set `--on-accent` to whichever of `#fff`/near-black gives ≥ 4.5:1 on `--accent`. If the accent fails 4.5:1 as text on `--bg`, use it for fills and lines only.
 
-Font pairings (display + body [+ mono]):
-- Luxury editorial: **Instrument Serif** + **Geist** · Cormorant Garamond + Hanken Grotesk
-- Tech precise: **Space Grotesk** + **Geist** + JetBrains Mono
-- Dark industrial: **Barlow Condensed** + Barlow + IBM Plex Mono
-- Organic soft: **Fraunces** + DM Sans
-- Playful bold: **Bricolage Grotesque** + Outfit
-- Brutalist: **Archivo Black** + Archivo + Space Mono
-- Retro-futurist: **Syne** + Chakra Petch + Share Tech Mono
-- Clean corporate: **Plus Jakarta Sans** only
+#### The type system (fixed, use on every site)
+
+Five roles, five fonts. The contrast between a huge condensed display face and a clean body face is what makes the page look designed. Do not replace them with a trendy grotesk.
+
+| Role | Font | Used for |
+| --- | --- | --- |
+| `--font-display` | **Bebas Neue** | Hero titles and the biggest headings (h1). Always uppercase by nature, tight, huge |
+| `--font-display2` | **Rajdhani** 500 to 700 | Section headings (h2/h3), nav links, buttons, small uppercase labels |
+| `--font-display3` | **Playfair Display** (italic) | Pull quotes, testimonials and one accent word at most. Never for headings in general |
+| `--font-body` | **Inter** | All body copy and UI text |
+| `--font-mono` | **JetBrains Mono** | Numbers, stats, prices, codes |
+
+Rules: Bebas Neue has one weight, never faux-bold it. Hero `line-height:.92`, letter-spacing `.02em`. Rajdhani labels are uppercase with `letter-spacing:.15em`, weight 600. Body copy is `line-height:1.7`, max `65ch`. Emphasis inside a headline uses the colour accent or italic of the SAME font, never a different family. Italic words with descenders (y g j p q) need `line-height:1.1` and `padding-bottom:.06em` so they do not clip. Light, romantic or editorial briefs (weddings, photography, luxury) may promote Playfair Display to the display role and keep Inter for body; everything else keeps Bebas Neue.
 
 ### A4. Visuals: photos, generated art and galleries (MANDATORY)
 
 **Rule zero:** this site must be *full of visuals*. Text-only layouts are rejected.
 
-#### A4.1 VISUAL BUDGET (minimum, every page)
+#### A4.1 VISUAL BUDGET (scale it to the brief)
 
-- **Hero visual:** a full-bleed photo with scrim, OR a 3D / shader scene, OR a product mock-up built in HTML/CSS, OR a photo collage. Never a bare-text hero.
-- **At least 14 distinct photos** on the page (20+ for restaurants, real estate, fashion/e-commerce, wedding, photography and gyms).
-- **At least one gallery section** (A4.4): masonry grid of **9 or more** photos with hover captions and a working lightbox. Its photos are chosen to fit the brand.
-- **Portraits, not initials:** every testimonial, review, team member, coach, agent and wedding-party member has a portrait photo from the `people.*` set (match the written gender and age).
-- **No more than two consecutive sections** without a photo, generated art panel or mock-up.
+Pages are visual, but photos are there to serve the content, never to fill space.
+
+- **Hero visual:** a full-bleed photo with scrim, OR a 3D / shader scene, OR a real product/UI composition, OR a photo collage. Never a bare-text hero, never a gradient blob.
+- **Photo count by brief:** visual businesses (restaurants, real estate, fashion, weddings, photography, gyms) use 12 or more photos; SaaS, agencies and portfolios use 4 to 8 chosen with care. Never pad to hit a number.
+- **A gallery section with lightbox (A4.4) only when the brief is visual** (see the type-specific section). Do not add a gallery to a SaaS page.
+- **Portraits, not initials:** every testimonial, review, team member, coach, agent and wedding-party member has a portrait from the `people.*` set (match the written gender and age).
+- **Rhythm:** no more than two consecutive sections without a photo or a visual panel.
 - Every card or tile with an image slot uses `.media` (generated art sits underneath the photo; see A4.3).
 - **Re-use limit:** a photo appears at most **twice** on a page, with different crops and different alt text.
-- Add at least one *atmosphere* moment: a photo marquee strip or a bento photo collage (A4.5).
+- No text, tags, pills, section numbers or fake photo credits on top of photos. Captions go below the image or on hover in a gallery.
+
+#### A4.1b PROFESSIONAL RESTRAINT (what separates a studio build from a template)
+
+These rules remove the usual AI-template tells. They override any effect list.
+
+1. **Layout variety.** Use at least 4 different layout families across the page (full-bleed, split, bento, horizontal rail, stacked list, pinned story, single big statement). A family appears at most once. Never 3 image+text splits in a row. No three identical equal-width feature cards in a row; use an asymmetric grid.
+2. **Eyebrows are rationed.** The small uppercase label above a heading may appear at most once per 3 sections (the hero counts). Most sections get no eyebrow; the heading alone is enough. Never number sections (`01 /`, `002`), never add a micro-sentence under an eyebrow.
+3. **Hero stack:** at most 4 text elements: optional eyebrow, headline (max 2 lines), subtext (max 20 words), CTAs (1 primary + 1 secondary). No tagline under the CTAs, no trust strip, no pricing teaser, no scroll cue.
+4. **One of each, not all of them.** One marquee per page at most. Grain (`body.grain`), cursor follower, tilt and spotlight cards are OFF unless the brief asks for that mood; pick at most two pointer effects per page.
+5. **No decoration for its own sake:** no locale or clock strips, no version labels (`v2.0`, `BETA`), no status dots, no vertical rotated text, no hairline grids that organise nothing, no pills overlaid on images.
+6. **One shape system.** One radius scale per page (all-soft or all-sharp, buttons may be full-pill), one accent colour used everywhere, one theme (no section flipping light/dark).
+7. **Motion is motivated.** Every animation must communicate hierarchy, sequence, feedback or state. If you cannot say why in one sentence, delete it.
+8. **Copy audit before finishing.** Re-read every visible string. Cut filler verbs (elevate, seamless, unleash, next-gen), invented-precision numbers (99.9%, 4.1x) that the brief did not give, and any sentence that sounds clever but means nothing. Plain and specific beats poetic. Section headings are 8 words or fewer; sub-paragraphs 25 words or fewer.
+9. **Buttons and forms.** CTA labels fit on one line (1 to 3 words), one label per intent across the page (not "Contact", "Get in touch" and "Let's talk" together), AA contrast on every button and field, labels above inputs.
+10. **Logo walls** (when needed) sit below the hero, contain logos only (no category captions), and use real SVG marks (Simple Icons CDN) or clean monograms for invented brands.
 
 #### A4.2 The verified photo library: use ONLY these
 
@@ -234,7 +255,7 @@ The engine puts a unique **generative SVG artwork** (mesh gradient, waves, topog
 - Force one slot with `data-art="rays"` on that `.media`; opt out with `data-art="none"`.
 - Use a `.media` *without any `<img>`* when you want pure artwork (brand panels, feature tiles, project covers): it renders the generated art by itself.
 
-#### A4.4 Gallery component (required at least once; use again wherever it fits)
+#### A4.4 Gallery component (use when the brief is visual; see A4.1)
 
 ```html
 <section class="sec" id="gallery"><div class="wrap">
@@ -258,7 +279,7 @@ The engine puts a unique **generative SVG artwork** (mesh gradient, waves, topog
 
 The engine adds the lightbox automatically (keyboard ←/→/Esc, swipe, preload, focus return) and the chip filters. Do not write your own lightbox.
 
-#### A4.5 Atmosphere components
+#### A4.5 Atmosphere components (optional, one at most: a marquee OR a bento collage, see A4.1b)
 
 **Photo marquee** (a slow, endless strip of photos; duplicate the set once for a seamless loop):
 
@@ -307,8 +328,10 @@ The engine adds the lightbox automatically (keyboard ←/→/Esc, swipe, preload
   --ok:#35c18a; --err:#f0615d;
 
   /* type: OVERRIDE font families */
-  --font-display:'Space Grotesk',system-ui,sans-serif;
-  --font-body:'Geist',system-ui,sans-serif;
+  --font-display:'Bebas Neue',Impact,sans-serif;
+  --font-display2:'Rajdhani',system-ui,sans-serif;
+  --font-display3:'Playfair Display',Georgia,serif;
+  --font-body:'Inter',system-ui,sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,monospace;
 
   /* fluid type scale */
@@ -349,7 +372,7 @@ ul,ol{list-style:none}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip-link{position:absolute;left:-999px;top:8px;z-index:10000;background:var(--accent);color:var(--on-accent);padding:.6rem 1rem;border-radius:8px}
 .skip-link:focus{left:12px}
-body::after{content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+body.grain::after{content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* ───────── layout ───────── */
@@ -360,15 +383,17 @@ body::after{content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;o
 .stack>*+*{margin-top:var(--stack,1rem)}
 
 /* ───────── type ───────── */
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;text-wrap:balance}
-.display{font-size:var(--step-5);line-height:.92;letter-spacing:-.04em}
-h1{font-size:var(--step-4);line-height:.96;letter-spacing:-.035em}
-h2{font-size:var(--step-3);line-height:1;letter-spacing:-.03em}
-h3{font-size:var(--step-1);line-height:1.15;letter-spacing:-.015em}
-p{text-wrap:pretty}
-.lead{font-size:var(--step-1);line-height:1.45;color:var(--text-2);max-width:56ch}
-.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font:500 var(--step--1)/1 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)}
-.eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
+h1{font-family:var(--font-display);font-weight:400;font-size:var(--step-5);line-height:.92;letter-spacing:.02em;text-wrap:balance}
+h2{font-family:var(--font-display2);font-weight:700;font-size:var(--step-3);line-height:1.04;letter-spacing:.005em;text-wrap:balance}
+h3{font-family:var(--font-display2);font-weight:600;font-size:var(--step-1);line-height:1.15}
+h4{font-family:var(--font-display2);font-weight:600;font-size:var(--step-0)}
+.display{font-family:var(--font-display);font-weight:400;font-size:var(--step-5);line-height:.92;letter-spacing:.02em}
+p{text-wrap:pretty;line-height:1.7;max-width:65ch}
+.lead{font-size:var(--step-1);line-height:1.5;color:var(--text-2);max-width:56ch}
+.label{font:600 .72rem/1 var(--font-display2);letter-spacing:.15em;text-transform:uppercase;color:var(--text-2)}
+.quote{font:italic 400 var(--step-1)/1.45 var(--font-display3);max-width:46ch}
+.stat{font:600 var(--step-3)/1 var(--font-mono);font-variant-numeric:tabular-nums}
+.eyebrow{display:inline-block;font:600 .72rem/1 var(--font-display2);letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
 .mono{font-family:var(--font-mono)}
 .num{font-variant-numeric:tabular-nums}
 .muted{color:var(--text-2)}
@@ -402,7 +427,7 @@ p{text-wrap:pretty}
 .site-header{position:fixed;inset:0 0 auto 0;z-index:900;transition:background-color .4s,backdrop-filter .4s,border-color .4s,transform .5s var(--ease-out);border-bottom:1px solid transparent}
 .site-header.stuck{background:rgb(var(--bg-rgb,11 11 12) / .72);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border-bottom-color:var(--line)}
 .header-in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:72px}
-.logo{font:600 1.25rem/1 var(--font-display);letter-spacing:-.03em;display:inline-flex;align-items:center;gap:.5rem}
+.logo{font:400 1.6rem/1 var(--font-display);letter-spacing:.06em;display:inline-flex;align-items:center;gap:.5rem}
 .logo i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent)}
 .nav-links{display:none;gap:2rem}
 .nav-links a{font-size:.95rem;color:var(--text-2);transition:color var(--t-hover)}
@@ -415,7 +440,7 @@ p{text-wrap:pretty}
 .mobile-menu{position:fixed;inset:0;z-index:950;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:96px var(--gutter) 40px;
   clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .7s var(--ease-drawer),visibility 0s .7s}
 .menu-open .mobile-menu{clip-path:inset(0);visibility:visible;transition-delay:0s}
-.mobile-menu a.m-link{display:block;font:500 clamp(2.4rem,11vw,4rem)/1.1 var(--font-display);letter-spacing:-.035em;padding:.2em 0;border-bottom:1px solid var(--line);
+.mobile-menu a.m-link{display:block;font:400 clamp(2.8rem,12vw,4.6rem)/1 var(--font-display);letter-spacing:.03em;padding:.2em 0;border-bottom:1px solid var(--line);
   opacity:0;transform:translateY(24px);transition:opacity .5s,transform .7s var(--ease-out)}
 .menu-open .mobile-menu a.m-link{opacity:1;transform:none;transition-delay:calc(.12s + var(--i,0)*60ms)}
 .mobile-menu .m-foot{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;color:var(--text-2)}
@@ -501,8 +526,8 @@ dialog.lb[open]{display:grid;grid-template-rows:auto 1fr auto;animation:lbIn .45
 .marquee{overflow:hidden;border-block:1px solid var(--line);padding-block:1.1rem}
 .marquee-track{display:flex;gap:3rem;width:max-content;animation:marq var(--marq-speed,32s) linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-track span{font:500 var(--step-3)/1 var(--font-display);letter-spacing:-.03em;white-space:nowrap;display:inline-flex;align-items:center;gap:3rem}
-.marquee-track span::after{content:"✦";font-size:.5em;color:var(--accent)}
+.marquee-track span{font:400 var(--step-3)/1 var(--font-display);letter-spacing:.03em;white-space:nowrap;display:inline-flex;align-items:center;gap:3rem}
+.marquee-track span::after{content:"";width:.35em;height:.35em;border-radius:50%;background:var(--accent)}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 /* ───────── cursor ───────── */
@@ -514,7 +539,7 @@ dialog.lb[open]{display:grid;grid-template-rows:auto 1fr auto;animation:lbIn .45
 /* ───────── loader ───────── */
 .loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:grid;place-items:center;transition:transform 1s var(--ease-in-out)}
 .loader.done{transform:translateY(-100%)}
-.loader-mark{font:600 clamp(2rem,8vw,4rem)/1 var(--font-display);letter-spacing:-.04em;animation:pulse 1.2s var(--ease-out) infinite alternate}
+.loader-mark{font:400 clamp(2.4rem,9vw,4.6rem)/1 var(--font-display);letter-spacing:.05em;animation:pulse 1.2s var(--ease-out) infinite alternate}
 @keyframes pulse{from{opacity:.25}to{opacity:1}}
 
 /* ───────── forms ───────── */
@@ -552,10 +577,10 @@ dialog.lb[open]{display:grid;grid-template-rows:auto 1fr auto;animation:lbIn .45
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>BRAND — specific value proposition</title>
+  <title>BRAND - specific value proposition</title>
   <meta name="description" content="150–160 characters of real copy.">
   <meta name="theme-color" content="#0b0b0c">
-  <meta property="og:title" content="BRAND — value proposition">
+  <meta property="og:title" content="BRAND - value proposition">
   <meta property="og:description" content="Same real copy.">
   <meta property="og:type" content="website">
   <!-- fonts + tabler + <style> with A6 CSS then page-specific CSS -->
@@ -807,7 +832,7 @@ Markup conventions the engine understands:
       setTimeout(() => {
         btn?.classList.remove('is-loading'); if (btn) btn.disabled = false;
         f.reset();
-        if (status) { status.textContent = f.dataset.success || 'Thanks — we’ll reply within a day.'; status.hidden = false; }
+        if (status) { status.textContent = f.dataset.success || 'Thanks - we’ll reply within a day.'; status.hidden = false; }
       }, 900);
     });
   });
@@ -1011,16 +1036,16 @@ Turn a curious scroller into a **free-trial booking**. Energy, proof and clarity
 
 | Type | Palette (A3) | Fonts |
 | --- | --- | --- |
-| Strength, CrossFit, boxing | **Ember** or **Solar** | Barlow Condensed + Barlow + IBM Plex Mono |
-| Boutique / HIIT | **Mono Lime** | Archivo Black + Archivo + Space Mono |
-| Yoga, pilates, wellness | **Moss** or **Rose Quartz** (light) | Fraunces + DM Sans |
+| Strength, CrossFit, boxing | **Ember** or **Solar** | Bebas Neue + Rajdhani + Inter |
+| Boutique / HIIT | **Mono Lime** | Bebas Neue + Rajdhani + Inter |
+| Yoga, pilates, wellness | **Moss** or **Rose Quartz** (light) | Bebas Neue + Rajdhani + Inter |
 
 Headings in uppercase condensed type, tight leading, huge scale. Photography is high-contrast and cropped tight; apply a dark scrim under all text.
 
 ### C3. Section order (all required)
 
 1. **Hero** — full-bleed training photo with scrim, giant uppercase headline, subline, **Start free trial** + **View schedule**, three trust chips (members, rating, years).
-2. **Marquee** — class names and values (“STRENGTH · HIIT · BOXING · MOBILITY”).
+2. **Class strip** — a static row of class names (Strength, HIIT, Boxing, Mobility). Not scrolling; the photo marquee below is the only marquee.
 3. **Numbers** — 4 counters (members, classes/week, coaches, sq ft).
 4. **Programs** — 4–6 program cards with image, level, duration and a hover reveal.
 5. **Class schedule** — day tabs (default: today) with a time table; each class has coach, level, spots left and a **Book** button that works.
@@ -1072,7 +1097,7 @@ h1,h2,h3{text-transform:uppercase}
 .nums{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media (min-width:861px){.nums{grid-template-columns:repeat(4,1fr)}}
 .num-card{padding:clamp(18px,3vw,32px);border:1px solid var(--line);border-radius:12px}
-.num-card b{display:block;font:700 var(--step-4)/1 var(--font-display);letter-spacing:-.02em;color:var(--accent);font-variant-numeric:tabular-nums}
+.num-card b{display:block;font:400 var(--step-4)/1 var(--font-display);letter-spacing:.02em;color:var(--accent);font-variant-numeric:tabular-nums}
 
 /* programs */
 .programs{display:grid;gap:12px}
@@ -1126,7 +1151,7 @@ h1,h2,h3{text-transform:uppercase}
 .ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
 .ba:focus-within .handle::after{outline:2px solid var(--accent);outline-offset:3px}
 .ba-stats{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1.4rem}
-.ba-stats b{display:block;font:700 var(--step-3)/1 var(--font-display);color:var(--accent)}
+.ba-stats b{display:block;font:400 var(--step-3)/1 var(--font-display);color:var(--accent)}
 
 /* pricing */
 .toggle{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:8px}
@@ -1136,7 +1161,7 @@ h1,h2,h3{text-transform:uppercase}
 @media (min-width:861px){.plans{grid-template-columns:repeat(3,1fr)}}
 .plan{display:flex;flex-direction:column;gap:1.2rem;border-radius:14px}
 .plan.pop{border-color:var(--accent);background:linear-gradient(180deg,rgb(var(--accent-rgb) / .12),var(--surface) 45%)}
-.price{font:700 var(--step-4)/1 var(--font-display);font-variant-numeric:tabular-nums}
+.price{font:400 var(--step-4)/1 var(--font-display);font-variant-numeric:tabular-nums}
 .price small{font:400 var(--step-0)/1 var(--font-body);color:var(--text-2);letter-spacing:0;text-transform:none}
 .plan ul{display:grid;gap:.7rem;flex:1;color:var(--text-2)}.plan li{display:flex;gap:.6rem}.plan li i{color:var(--accent);margin-top:.28rem}
 
@@ -1145,17 +1170,17 @@ h1,h2,h3{text-transform:uppercase}
 @media (min-width:861px){.calc{grid-template-columns:1fr 1fr}}
 .row2{display:grid;gap:12px;grid-template-columns:1fr 1fr}
 .result{display:grid;gap:1rem;align-content:start}
-.big{font:700 var(--step-5)/.9 var(--font-display);color:var(--accent);font-variant-numeric:tabular-nums}
+.big{font:400 var(--step-5)/.9 var(--font-display);color:var(--accent);font-variant-numeric:tabular-nums}
 .bmi-scale{height:10px;border-radius:99px;background:linear-gradient(90deg,#4f8cff 0 18.5%,var(--ok) 18.5% 25%,#f2b441 25% 30%,var(--err) 30% 100%);position:relative;margin-top:.4rem}
 .bmi-scale i{position:absolute;top:50%;width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--bg);translate:-50% -50%;left:var(--at,0%);transition:left .8s var(--ease-out)}
 .macros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .macros div{padding:.9rem;border:1px solid var(--line);border-radius:10px;text-align:center}
-.macros b{display:block;font:700 var(--step-2)/1 var(--font-display)}
+.macros b{display:block;font:400 var(--step-2)/1 var(--font-display)}
 .macros small{color:var(--text-2);font:500 .7rem/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
 
 .reviews{display:grid;gap:12px}@media (min-width:861px){.reviews{grid-template-columns:repeat(3,1fr)}}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.2rem 0;font:600 var(--step-1)/1.3 var(--font-display);text-transform:uppercase}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.2rem 0;font:400 var(--step-1)/1.3 var(--font-display);text-transform:uppercase}
 .faq summary::-webkit-details-marker{display:none}.faq summary i{transition:transform .4s var(--ease-out)}
 .faq details[open] summary i{transform:rotate(45deg)}.faq .ans{padding-bottom:1.3rem;color:var(--text-2);max-width:62ch}
 .trial{display:grid;gap:clamp(24px,5vw,72px)}@media (min-width:861px){.trial{grid-template-columns:1fr 1fr}}

@@ -24,13 +24,13 @@ Make a founder think “these people will make us look incredible” within five
 ### C2. Direction
 
 Pick one and commit:
-- **Loud Mono** — Mono Lime or Noir Gold, Archivo Black/Bricolage Grotesque, huge uppercase type, hard grid lines.
-- **Quiet Luxe** — Ink & Cream or Glacier, Instrument Serif + Geist, generous white space, italic accents.
-- **Playful Pop** — Citrus or Violet Hour, Bricolage Grotesque + Outfit, rounded pills, sticker-like badges.
+- **Loud Mono** — Mono Lime or Noir Gold, Bebas Neue + Rajdhani + Inter, huge uppercase type, hard grid lines.
+- **Quiet Luxe** — Ink & Cream or Glacier, Playfair Display + Inter, generous white space, italic accents.
+- **Playful Pop** — Citrus or Violet Hour, Bebas Neue + Rajdhani + Inter, rounded pills, sticker-like badges.
 
 ### C3. Section order (all required)
 
-1. **Hero** — a statement of 6–12 words set at `--step-5` with `data-split`, studio descriptor line, a rotating “now booking” badge, and a CTA. Optionally a looping CSS marquee of services under it.
+1. **Hero** — a statement of 6–12 words set at `--step-5` with `data-split`, studio descriptor line, and a CTA. Nothing else.
 2. **Intro / positioning** — one large paragraph + 3 proof numbers (years, projects, awards).
 3. **Selected work** — featured projects as large cards with `.img-reveal` photography or generated art; `data-cursor` makes the cursor grow, and the card label reads “View case”.
 4. **Pinned horizontal gallery** — a scroll-driven horizontal track of 5–6 project panels (desktop); native snap scroller on mobile.
@@ -76,10 +76,10 @@ Use `<body data-art-kinds="stripes,rings,grid,mesh">`. Total distinct photos ≥
 
 .intro{display:grid;gap:clamp(24px,4vw,56px)}
 @media (min-width:861px){.intro{grid-template-columns:1.6fr 1fr}}
-.intro-text{font:400 var(--step-3)/1.1 var(--font-display);letter-spacing:-.03em;text-wrap:balance}
+.intro-text{font:400 var(--step-3)/1.1 var(--font-display);letter-spacing:.02em;text-wrap:balance}
 .proof{display:grid;gap:1.4rem;align-content:end}
 .proof div{border-top:1px solid var(--line);padding-top:.8rem}
-.proof b{font:500 var(--step-4)/1 var(--font-display);letter-spacing:-.04em;display:block}
+.proof b{font:400 var(--step-4)/1 var(--font-display);letter-spacing:.02em;display:block}
 
 /* featured cards */
 .cases{display:grid;gap:clamp(28px,5vw,64px)}
@@ -129,16 +129,16 @@ Use `<body data-art-kinds="stripes,rings,grid,mesh">`. Total distinct photos ≥
 .proc .card small{font:500 var(--step--1)/1 var(--font-mono);color:var(--accent);letter-spacing:.1em}
 .clients{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
 @media (min-width:861px){.clients{grid-template-columns:repeat(4,1fr)}}
-.clients span{display:grid;place-items:center;min-height:120px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font:600 var(--step-1)/1 var(--font-display);letter-spacing:-.03em;color:var(--text-3);transition:color var(--t-hover),background-color var(--t-hover)}
+.clients span{display:grid;place-items:center;min-height:120px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font:400 var(--step-1)/1 var(--font-display);letter-spacing:.02em;color:var(--text-3);transition:color var(--t-hover),background-color var(--t-hover)}
 @media (hover:hover) and (pointer:fine){.clients span:hover{color:var(--text);background:var(--surface)}}
 .award{display:grid;grid-template-columns:4rem 1fr;gap:.25rem 1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
 @media (min-width:861px){.award{grid-template-columns:6rem 1fr 1fr 8rem}}
 .award .y{font-family:var(--font-mono);color:var(--text-3)}
 
-.big-quote{font:400 var(--step-4)/1.02 var(--font-display);letter-spacing:-.04em;max-width:16em;text-wrap:balance}
+.big-quote{font:400 var(--step-4)/1.02 var(--font-display);letter-spacing:.02em;max-width:16em;text-wrap:balance}
 .big-quote cite{display:block;margin-top:1.5rem;font:500 var(--step--1)/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-style:normal}
-.cta-mega{font:500 var(--step-5)/.9 var(--font-display);letter-spacing:-.05em}
-.foot-name{font:500 clamp(4rem,22vw,22rem)/.8 var(--font-display);letter-spacing:-.06em;color:var(--surface-2);white-space:nowrap;overflow:hidden;margin-top:2rem;user-select:none}
+.cta-mega{font:400 var(--step-5)/.9 var(--font-display);letter-spacing:.02em}
+.foot-name{font:400 clamp(4rem,22vw,22rem)/.8 var(--font-display);letter-spacing:.02em;color:var(--surface-2);white-space:nowrap;overflow:hidden;margin-top:2rem;user-select:none}
 ```
 
 ### C6. Markup patterns
@@ -171,9 +171,9 @@ Use `<body data-art-kinds="stripes,rings,grid,mesh">`. Total distinct photos ≥
 
 ```html
 <section class="sec hscroll" id="reel" aria-label="Project reel"><div class="h-pin">
-  <div class="wrap h-head"><div><p class="eyebrow">Reel</p><h2>Recent work</h2></div><p class="muted">Scroll →</p></div>
+  <div class="wrap h-head"><div><p class="eyebrow">Reel</p><h2>Recent work</h2></div></div>
   <div class="h-track" id="h-track">
-    <article class="h-card" data-cursor><div class="media"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=900&h=1125&fit=crop&q=80&auto=format" width="900" height="1125" alt="Boutique clothes rail for the Linea retail identity" loading="lazy" decoding="async" data-seed="linea-boutique"></div><h3>Linea — retail identity</h3><span class="muted mono">Brand · 2025</span></article>
+    <article class="h-card" data-cursor><div class="media"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=900&h=1125&fit=crop&q=80&auto=format" width="900" height="1125" alt="Boutique clothes rail for the Linea retail identity" loading="lazy" decoding="async" data-seed="linea-boutique"></div><h3>Linea - retail identity</h3><span class="muted mono">Brand · 2025</span></article>
     <!-- 5–6 cards -->
   </div>
   <div class="h-bar" aria-hidden="true"><i id="h-fill"></i></div>

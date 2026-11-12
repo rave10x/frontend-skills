@@ -3,7 +3,7 @@
 
 > **HOW TO USE**
 > 1. Paste this ENTIRE file into any capable AI (Claude, GPT, Gemini…).
-> 2. Then send: `Build a launch site for <PRODUCT> — <what it is, one line>. Palette: <name or "you choose">. Launch date: <date or "invent">. Price: <price or "invent">.`
+> 2. Then send: `Build a launch site for <PRODUCT> - <what it is, one line>. Palette: <name or "you choose">. Launch date: <date or "invent">. Price: <price or "invent">.`
 > 3. The AI returns a single `index.html`. Save it, open it from a local server or any static host (WebGL import maps need `http(s)`, not always `file://`).
 
 If any detail is missing, **invent believable specifics** instead of asking questions.
@@ -23,7 +23,7 @@ A teaser-to-waitlist experience. One scene, one object, one story told by scroll
 
 ### C2. Direction
 
-Default **Violet Hour** (creative/AI) or **Ember** (hardware, sport). Alternatives: **Blueprint**, **Solar**, **Mono Lime**. Fonts: Syne or Space Grotesk for display, Geist body, JetBrains Mono for labels. Dark backgrounds make the lighting read best.
+Default **Violet Hour** (creative/AI) or **Ember** (hardware, sport). Alternatives: **Blueprint**, **Solar**, **Mono Lime**. Type: the fixed type system in A3 (Bebas Neue hero, Rajdhani labels, Inter body, JetBrains Mono for specs). Dark backgrounds make the lighting read best.
 
 ### C3. Section order (all required)
 
@@ -33,7 +33,7 @@ Default **Violet Hour** (creative/AI) or **Ember** (hardware, sport). Alternativ
 4. **Detail strip** — 3 short cards that explain one innovation each.
 5. **Voices** — early-tester quotes or press lines.
 6. **Waitlist CTA** — repeat the form, counter of people already on the list (`data-count`), launch countdown.
-7. **FAQ** — 4 `<details>` items (shipping, warranty, price, compatibility).
+7. **FAQ** - 4 `<details>` items (shipping, warranty, price, compatibility).
 8. **Footer.**
 
 ### C3b. Visual plan (MANDATORY; keys refer to the photo library in A4.2)
@@ -88,7 +88,7 @@ main,.site-footer{position:relative;z-index:1}
 .specs{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
 @media (min-width:861px){.specs{grid-template-columns:repeat(3,1fr)}}
 .spec{padding:clamp(16px,3vw,28px)}
-.spec b{display:block;margin-top:1.4rem;font:500 var(--step-3)/1 var(--font-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.spec b{display:block;margin-top:1.4rem;font:400 var(--step-3)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .spec small{color:var(--text-2)}
 .details{display:grid;gap:12px}
 @media (min-width:861px){.details{grid-template-columns:repeat(3,1fr)}}
@@ -96,13 +96,13 @@ main,.site-footer{position:relative;z-index:1}
 @media (min-width:861px){.voices{grid-template-columns:repeat(3,1fr)}}
 .voices blockquote{font:400 var(--step-1)/1.35 var(--font-display)}
 .count-row{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;align-items:baseline}
-.count-row b{font:500 var(--step-4)/1 var(--font-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.count-row b{font:400 var(--step-4)/1 var(--font-display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .countdown{display:flex;gap:.8rem}
 .countdown div{min-width:72px;padding:.8rem;border:1px solid var(--line);border-radius:14px;text-align:center;background:var(--surface)}
 .countdown b{display:block;font:500 var(--step-2)/1 var(--font-mono);font-variant-numeric:tabular-nums}
 .countdown small{font:500 .65rem/1 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--text-3)}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;padding:1.2rem 0;font:500 var(--step-1)/1.3 var(--font-display)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;padding:1.2rem 0;font:400 var(--step-1)/1.3 var(--font-display)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary i{transition:transform .4s var(--ease-out)}
 .faq details[open] summary i{transform:rotate(45deg)}
@@ -264,9 +264,9 @@ Rules for the scene:
 
 ```html
 <section class="story" id="story" aria-label="The product story">
-  <article class="beat"><div class="copy"><span class="n">01 / FORM</span><h2>One piece. No seams.</h2><p>Milled from a single block of aluminium, then polished by hand for six hours.</p></div></article>
-  <article class="beat"><div class="copy"><span class="n">02 / SOUND</span><h2>360° of clarity.</h2><p>Six drivers and a custom DSP tuned in an anechoic chamber.</p></div></article>
-  <article class="beat"><div class="copy"><span class="n">03 / POWER</span><h2>A week on one charge.</h2><p>40 hours at full volume. Ten minutes of charging gives you four hours.</p></div></article>
+  <article class="beat"><div class="copy"><span class="n">Form</span><h2>One piece. No seams.</h2><p>Milled from a single block of aluminium, then polished by hand for six hours.</p></div></article>
+  <article class="beat"><div class="copy"><span class="n">Sound</span><h2>360° of clarity.</h2><p>Six drivers and a custom DSP tuned in an anechoic chamber.</p></div></article>
+  <article class="beat"><div class="copy"><span class="n">Power</span><h2>A week on one charge.</h2><p>40 hours at full volume. Ten minutes of charging gives you four hours.</p></div></article>
   <div class="story-meter" aria-hidden="true"><i></i></div>
 </section>
 ```

@@ -3,7 +3,7 @@
 
 > **HOW TO USE**
 > 1. Paste this ENTIRE file into any capable AI (Claude, GPT, Gemini…).
-> 2. Then send: `Build a store for <BRAND> — <what it sells> in <CITY/COUNTRY>. Currency: <INR/USD/EUR…>. Vibe: <words>. Products: <list or "invent 12">. Free shipping over: <amount or "invent">.`
+> 2. Then send: `Build a store for <BRAND> - <what it sells> in <CITY/COUNTRY>. Currency: <INR/USD/EUR…>. Vibe: <words>. Products: <list or "invent 12">. Free shipping over: <amount or "invent">.`
 > 3. The AI returns a single `index.html`. Save it and deploy anywhere.
 
 If any detail is missing, **invent believable specifics** instead of asking questions.
@@ -27,11 +27,11 @@ Make browsing effortless and buying feel safe: **clear products, fast add-to-bag
 
 | Store | Palette (A3) | Fonts |
 | --- | --- | --- |
-| Fashion, jewellery | Noir Gold, or Ink & Cream (light) | Cormorant Garamond/Instrument Serif + Hanken Grotesk/Geist |
-| Beauty, wellness | Rose Quartz (light) or Moss | Fraunces + DM Sans |
-| Tech, gadgets | Blueprint or Mono Lime | Space Grotesk + Geist |
-| Food, coffee, home | Terracotta or Citrus (light) | Fraunces + DM Sans |
-| Sport, streetwear | Ember or Solar | Barlow Condensed + Barlow |
+| Fashion, jewellery | Noir Gold, or Ink & Cream (light) | Playfair Display + Inter |
+| Beauty, wellness | Rose Quartz (light) or Moss | Bebas Neue + Rajdhani + Inter |
+| Tech, gadgets | Blueprint or Mono Lime | Bebas Neue + Rajdhani + Inter |
+| Food, coffee, home | Terracotta or Citrus (light) | Bebas Neue + Rajdhani + Inter |
+| Sport, streetwear | Ember or Solar | Bebas Neue + Rajdhani + Inter |
 
 Product photography is the hero; chrome stays quiet. Use `aspect-ratio: 4/5` for all product images.
 
@@ -110,7 +110,7 @@ Use `<body data-art-kinds="mesh,stripes,waves">`. Total distinct photos ≥ 28.
 .tile{position:relative;display:block;aspect-ratio:3/4;border-radius:var(--r-lg);overflow:hidden;isolation:isolate;text-align:left;color:#fff}
 .tile .media{position:absolute;inset:0;border-radius:0;z-index:-1}
 .tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgb(0 0 0 / .7),transparent 55%)}
-.tile span{position:absolute;left:1rem;bottom:1rem;right:1rem;display:flex;justify-content:space-between;align-items:center;font:500 var(--step-1)/1 var(--font-display)}
+.tile span{position:absolute;left:1rem;bottom:1rem;right:1rem;display:flex;justify-content:space-between;align-items:center;font:400 var(--step-1)/1 var(--font-display)}
 
 /* toolbar */
 .toolbar{display:grid;gap:12px;margin:2rem 0}
